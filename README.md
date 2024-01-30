@@ -1,4 +1,5 @@
 # Hack.Diversity Tech Dive Template
+# Names: Tales Araujo Mota
 
 ## Getting Started
 

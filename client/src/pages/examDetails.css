@@ -1,0 +1,9 @@
+.examDetails {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.patientInfo, .examInfo {
+    flex-basis: 45%;
+}

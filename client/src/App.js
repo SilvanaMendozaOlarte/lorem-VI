@@ -2,6 +2,30 @@ import './App.css';
 
 import { useApi } from './hooks/use-api';
 
+//search bar
+function search(){
+  const[query,setquery] = useState("");
+  const getFilteredExams = (query,exams) => {
+    if(!query){
+      return exams;
+    }
+    return exams.filter(exams.name.includes(query))
+  }
+  const exams = [
+    { patientID: 1, examID: 1, keyFindings: 'A note.', brixiaScores: 1, age:1, sex:1, bmi:1, zip:1},
+    { patientID: 2, examID: 2, keyFindings: 'A note.', brixiaScores: 2, age:2, sex:1, bmi:1, zip:1},
+  ]
+  const filteredExams = getFilteredExams(query,exams)
+
+  return(
+    <div>
+      <label>Search</label>
+      <input type="text" onChange= {e => setquery(e.target.value)} />
+    </div>
+    );
+    
+  }
+
 // returns the table containing exam data
 function ExamTable(){
   const exams = [

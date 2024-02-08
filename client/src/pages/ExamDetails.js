@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+// import { useParams } from 'react-router-dom';
 import './examDetails.css';
 
 const ExamDetails = () => {
@@ -20,6 +21,41 @@ const ExamDetails = () => {
         }
     };
 
+    /**
+      *  To Implement later
+      *  Will need to run    ----> `npm install react-router-dom` in cmd/Terminal
+      * */
+    // const { examID } = useParams();
+    // const [examDetails, setExamDetails] = useState(null);
+    // const [isLoading, setIsLoading] = useState(true);
+    // const [error, setError] = useState(null);
+
+    // useEffect(() => {
+    //     // Simulating a fetch request. Replace with actual API call.
+    //     const fetchExamDetails = async () => {
+    //         setIsLoading(true);
+    //         try {
+    //             // Replace with actual API endpoint
+    //             const response = await fetch(`/api/exams/${examID}`);
+    //             if (!response.ok) throw new Error('Data not found');
+    //             const data = await response.json();
+    //             setExamDetails(data);
+    //         } catch (err) {
+    //             setError(err.message);
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     };
+
+    //     fetchExamDetails();
+    // }, [examID]);
+
+    // if (isLoading) return <div>Loading...</div>;
+    // if (error) return <div>Error: {error}</div>;
+    // if (!examDetails) return <div>No Exam Details Found</div>;
+
+
+    // Display exam details
     return ( 
         <div className="examDetails">
             < div className="patientInfo">
@@ -30,7 +66,7 @@ const ExamDetails = () => {
                 <p>BMI: {patientExamData.patientInfo.bmi}</p>
                 <p>Zip Code: {patientExamData.patientInfo.zipCode}</p>
             </div>
-            < div className="examInfo">
+            <div className="examInfo">
                 <h3>Exam Info</h3>
                 <p>Exam ID: {patientExamData.examInfo.examID}</p>
                 <img src={patientExamData.examInfo.imageUrl} alt="X-Ray" />

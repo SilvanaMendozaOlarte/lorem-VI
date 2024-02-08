@@ -1,4 +1,5 @@
 import React from "react";
+import './examDetails.css';
 
 const ExamDetails = () => {
     // Temporary Dummy data 

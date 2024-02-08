@@ -1,9 +1,12 @@
+import React, { useState } from 'react';
+// import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import ExamDetails from './pages/ExamDetails'
 import './App.css';
-
 import { useApi } from './hooks/use-api';
 
+
 //search bar
-function search(){
+function Search(){
   const[query,setquery] = useState("");
   const getFilteredExams = (query,exams) => {
     if(!query){
@@ -19,7 +22,7 @@ function search(){
 
   return(
     <div>
-      <label>Search</label>
+      <label>Search: </label>
       <input type="text" onChange= {e => setquery(e.target.value)} />
     </div>
     );

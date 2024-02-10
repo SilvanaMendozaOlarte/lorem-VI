@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Navbar from './Navbar';
 import App from './App';
+import Navbar from './Navbar';
 
 import reportWebVitals from './reportWebVitals';
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from "./theme/theme.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Navbar />
-    <App />
+    <ChakraProvider theme={theme}>
+      <Navbar />
+      <App />
+    </ChakraProvider>
   </React.StrictMode>
 );
 

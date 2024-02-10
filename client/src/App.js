@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ExamDetails from './pages/ExamDetails'
 import './App.css';
 import { useApi } from './hooks/use-api';
-import ExamTable from './examtable.js';
+import ExamTable from './ExamTable.js';
 import { Box, Heading } from '@chakra-ui/react'
 
 

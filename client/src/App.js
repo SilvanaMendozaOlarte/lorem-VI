@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 // import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import ExamDetails from './pages/ExamDetails'
+
 import './App.css';
 import { useApi } from './hooks/use-api';
 import ExamTable from './ExamTable.js';
 import { Box, Heading } from '@chakra-ui/react'
+import { BrowserRouter } from 'react-router-dom';
+import Navbar from './Navbar';
 
 
 //search bar
@@ -35,16 +37,16 @@ function App() {
   const { response } = useApi();
 
   return (
+    <div className="App">
       <Box maxW={1000} mx="auto" px={6} pt={24} fontSize="sm">
-        <div className="App">
-          <header className="App-header">
-            <p>
-              {response}
-              <ExamTable></ExamTable>
-            </p>
-          </header>
-        </div>
+        <header className="App-header">
+          <p>
+            <ExamTable />
+            {response}
+          </p>
+        </header>
       </Box>
+    </div>
   );
 }
 

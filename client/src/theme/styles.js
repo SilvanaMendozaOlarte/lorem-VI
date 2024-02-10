@@ -1,14 +1,14 @@
 const styles = {
   global: {
     "html, body": {
-      backgroundColor: "rgb(248 250 252)",
-      color: "whiteAlpha.800",
+      backgroundColor: "gray.100",
+      color: "gray.500",
     },
     svg: {
       cursor: "pointer",
     },
     ".table": {
-      border: "1px solid #424242",
+      border: "1px solid #D3D3D3",
     },
     ".tr": {
       display: "flex",

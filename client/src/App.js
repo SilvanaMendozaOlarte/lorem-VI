@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 
 import './App.css';
 import { useApi } from './hooks/use-api';
-import ExamTable from './ExamTable.js';
+import ExamTable from './components/ExamTable.js';
 import { Box, Heading } from '@chakra-ui/react'
 import { BrowserRouter } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from './components/Navbar';
 
 
 //search bar

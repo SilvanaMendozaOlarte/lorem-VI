@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import ExamDetails from './pages/ExamDetails'
-import Navbar from './Navbar';
-import ExamTable from './ExamTable.js';
+import Navbar from './components/Navbar.js';
+import ExamTable from './components/ExamTable.js';
 
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';

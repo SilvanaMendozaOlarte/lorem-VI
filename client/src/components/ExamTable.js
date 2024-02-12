@@ -77,7 +77,8 @@ const columns = [
 
 
 function ExamTable(){
-  const[data, setData] = useState(exams)
+  const [data, setData] = useState(exams)
+
   const table = useReactTable({
     columns,
     data,
@@ -85,6 +86,7 @@ function ExamTable(){
   });
 
   return (
+    
     <Box>
       <Box className="table" w={table.getTotalSize()}>
           {table.getHeaderGroups().map( (headerGroup) => (

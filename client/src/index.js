@@ -1,16 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Navbar from './Navbar';
 import App from './App';
+import ExamDetails from './pages/ExamDetails'
+import Navbar from './components/Navbar.js';
+import ExamTable from './components/ExamTable.js';
 
 import reportWebVitals from './reportWebVitals';
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from "./theme/theme.js";
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Navbar />
-    <App />
+    <ChakraProvider theme={theme}>
+      <BrowserRouter>
+        <Navbar />
+        <App />
+      </BrowserRouter>
+    </ChakraProvider>
   </React.StrictMode>
 );
 

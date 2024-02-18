@@ -41,8 +41,9 @@ function App() {
       <Box maxW={1000} mx="auto" px={6} pt={24} fontSize="sm">
         <header className="App-header">
           <p>
+            <Search />
             {/* NOTE: when false, does not show update and delete columns              */}
-            <ExamTable isAdminTable={true}/>
+            <ExamTable isAdminTable={false}/>
             {response}
           </p>
         </header>

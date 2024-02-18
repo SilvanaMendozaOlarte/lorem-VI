@@ -25,7 +25,7 @@ const exams = [
     zip:1
   }
 ]
-const columns = [
+const mainColumns = [
   {
     accessorKey: 'patientID',
     header: 'Patient ID',
@@ -75,9 +75,31 @@ const columns = [
   },
 ]
 
+const adminColumns = [
+  {
+    accessorKey: 'update',
+    header: 'Update',
+    cell: (props) => (
+      <Button colorScheme="teal" variant="solid" size="sm" >
+        Update
+      </Button>
+    ),
+  },
+  {
+    accessorKey: 'delete',
+    header: 'Delete',
+    cell: (props) => (
+      <Button colorScheme="red" variant="solid" size="sm" >
+        Delete
+      </Button>
+    ),
+  },
+];
 
-function ExamTable(){
+function ExamTable({ isAdminTable }){
   const [data, setData] = useState(exams)
+
+  const columns = isAdminTable ? [...mainColumns, ...adminColumns] : mainColumns;
 
   const table = useReactTable({
     columns,

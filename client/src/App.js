@@ -1,17 +1,14 @@
 import React from 'react';
-// import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-
 import './App.css';
 import { useApi } from './hooks/use-api';
 import ExamTable from './components/ExamTable.js';
 import { Box, Heading } from '@chakra-ui/react'
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useHistory } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { Search } from './components/Search.js';
 
 
 function App() {
-  const { response } = useApi();
 
   return (
     <div className="App">
@@ -20,8 +17,11 @@ function App() {
           <p>
             <Search />
             {/* NOTE: when false, does not show update and delete columns              */}
-            <ExamTable isAdminTable={false}/>
-            {response}
+            <Routes>
+              <Route path="/index" element={<ExamTable isAdminTable={false}/>} />
+              <Route path="/admin" element={<ExamTable isAdminTable={true}/>} />
+            </Routes>
+            
           </p>
         </header>
       </Box>

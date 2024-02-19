@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,5 +17,5 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #cce2e9;
 }

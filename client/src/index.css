@@ -6,15 +6,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* again, this is just a placeholder for the navBar*/
-.navBar {
+
+.navbar {
   width: 100%;
-  background-color: gray;
+  background-color: rgb(87, 87, 87);
 }
 
-.navBar a {
+.nav{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  float: none;
+}
+
+.nav-item {
+  list-style: none;
+  text-align: center;
+  float: left;
+  
+}
+
+.navbar a {
   text-align: center;
   color:aquamarine;
+  padding: 14px;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

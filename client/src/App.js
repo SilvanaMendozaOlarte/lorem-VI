@@ -1,45 +1,34 @@
+import React from 'react';
 import './App.css';
-
 import { useApi } from './hooks/use-api';
+import ExamTable from './components/ExamTable.js';
+import { Box, Heading } from '@chakra-ui/react'
+import { BrowserRouter as Router, Route, Routes, useHistory } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import { Search } from './components/Search.js';
+import PatientDetails from './pages/PatientDetails.js';
+import ExamUpdate from './pages/examUpdate.js';
+import ExamDetails from './pages/ExamDetails.js';
 
-// returns the table containing exam data
-function ExamTable(){
-  const exams = [
-    { patientID: 1, examID: 1, keyFindings: 'A note.', brixiaScores: 1, age:1, sex:1, bmi:1, zip:1},
-    { patientID: 2, examID: 2, keyFindings: 'A note.', brixiaScores: 2, age:2, sex:1, bmi:1, zip:1},
-  ]
-
-  return (
-    <table className='examTable'>
-      {exams.map(exam =>
-        //table row
-        <tr key={exam.id}>
-          {/* data cells */}
-          <td>{exam.patientID}</td> 
-          <td>{exam.examID}</td>
-          <td>{exam.keyFindings}</td>
-          <td>{exam.brixiaScores}</td>
-          <td>{exam.age}</td>
-          <td>{exam.sex}</td>
-          <td>{exam.bmi}</td>
-          <td>{exam.zip}</td>
-        </tr>
-      )}
-    </table>
-  )
-}
 
 function App() {
-  const { response } = useApi();
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          {response}
-          <ExamTable></ExamTable>
-        </p>
-      </header>
+      <Box maxW={1000} mx="auto" px={6} pt={24} fontSize="sm">
+        <header className="App-header">
+            {/* NOTE: when false, does not show update and delete columns              */}
+            <Routes>
+              <Route path="/" element={<ExamTable/>} />
+              <Route path="/exams" element={<ExamTable isAdminTable={false}/>} />
+              <Route path="/admin" element={<ExamTable isAdminTable={true}/>} />
+              <Route path="/exam/:id" element={<ExamDetails/>}/>
+              <Route path="/exams/create" />
+              <Route path="/exam/:id/update" element={<examUpdate/>} />
+              <Route path="/patient/:id" element={<PatientDetails/>} />
+            </Routes>
+        </header>
+      </Box>
     </div>
   );
 }

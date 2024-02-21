@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Admin() {
+export default function CreateExam() {
   return (
     <div className="container mt-5">
       <h1 className="text-center mb-4">Create Exam</h1>

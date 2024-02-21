@@ -96,9 +96,9 @@ const adminColumns = [
   },
 ];
 
-function ExamTable({ isAdminTable }){
-  const [data, setData] = useState(exams)
 
+function ExamTable({ isAdminTable }){
+  const [data, setData] = useState(exams);
   const columns = isAdminTable ? [...mainColumns, ...adminColumns] : mainColumns;
 
   const table = useReactTable({
@@ -108,39 +108,29 @@ function ExamTable({ isAdminTable }){
   });
 
   return (
-    
-    <Box>
-      <Box className="table" w={table.getTotalSize()}>
-          {table.getHeaderGroups().map( (headerGroup) => (
-            //table row
-            <Box className="tr" w key={headerGroup.id}>
-              {headerGroup.headers.map( (header) => (
-                <Box className="th" w={header.getSize()} key={header.id}>
-                  {header.column.columnDef.header}
-                </Box>
-              ))}
-            </Box>
-          ))}
-          {
-            table.getRowModel().rows.map( (row) => <Box className="tr" key={row.id}>
-              {row.getVisibleCells().map( (cell) => <Box className="td" w={cell.column.getSize()} key={cell.id}> 
-                {/* render react components */}
+    <Box overflowX="auto"> 
+      <Box className="table" w="full" minWidth="1000px"> 
+        {table.getHeaderGroups().map((headerGroup) => (
+          <Box className="tr" w="full" key={headerGroup.id}>
+            {headerGroup.headers.map((header) => (
+              <Box className="th" key={header.id} style={{ minWidth: header.getSize() }}>
+                {header.column.columnDef.header}
+              </Box>
+            ))}
+          </Box>
+        ))}
+        {table.getRowModel().rows.map((row) => (
+          <Box className="tr" w="full" key={row.id}>
+            {row.getVisibleCells().map((cell) => (
+              <Box className="td" key={cell.id} style={{ minWidth: cell.column.getSize() }}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </Box>)}
-            </Box>)
-          }
+              </Box>
+            ))}
+          </Box>
+        ))}
       </Box>
     </Box>
-  )
+  );
 }
-                // {/* data cells */}
-                // <td>{exam.patientID}</td> 
-                // <td>{exam.examID}</td>
-                // <td>{exam.keyFindings}</td>
-                // <td>{exam.brixiaScores}</td>
-                // <td>{exam.age}</td>
-                // <td>{exam.sex}</td>
-                // <td>{exam.bmi}</td>
-                // <td>{exam.zip}</td>
-  
-  export default ExamTable;
+
+export default ExamTable;

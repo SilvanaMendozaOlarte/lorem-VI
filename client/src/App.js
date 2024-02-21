@@ -20,7 +20,7 @@ function App() {
             {/* NOTE: when false, does not show update and delete columns              */}
             <Routes>
               <Route path="/" element={<ExamTable/>} />
-              <Route path="/index" element={<ExamTable isAdminTable={false}/>} />
+              <Route path="/exams" element={<ExamTable isAdminTable={false}/>} />
               <Route path="/admin" element={<ExamTable isAdminTable={true}/>} />
               <Route path="/exam/:id" element={<ExamDetails/>}/>
               <Route path="/exams/create" />

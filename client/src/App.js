@@ -23,7 +23,6 @@ function App() {
               <Route path="/exams" element={<ExamTable isAdminTable={false}/>} />
               <Route path="/admin" element={<ExamTable isAdminTable={true}/>} />
               <Route path="/exam/:id" element={<ExamDetails/>}/>
-              <Route path="/exams/create" />
               <Route path="/exam/:id/update" element={<examUpdate/>} />
               <Route path="/patient/:id" element={<PatientDetails/>} />
             </Routes>

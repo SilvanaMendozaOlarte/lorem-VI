@@ -1,5 +1,5 @@
 # Hack.Diversity Tech Dive Template
-# Names: Tales Araujo Mota
+# Names: Tales Araujo Mota Githendu Mukiri
 
 ## Getting Started
 

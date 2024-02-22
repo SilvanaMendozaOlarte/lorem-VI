@@ -1,7 +1,8 @@
 // returns the table containing exam data
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import { Box, Button, ButtonGroup, Icon, Text } from "@chakra-ui/react";
+import mData from '../MOCK_DATA.json'
 
 const exams = [
   { patientID: 1,
@@ -27,12 +28,12 @@ const exams = [
 ]
 const mainColumns = [
   {
-    accessorKey: 'patientID',
+    accessorKey: 'patient_id',
     header: 'Patient ID',
     cell: (props) => <p>{props.getValue()}</p>
   },
   {      
-    accessorKey: 'examID',
+    accessorKey: 'exam_id',
     header: 'Exam ID',
     cell: (props) => <p>{props.getValue()}</p>
   },
@@ -44,12 +45,12 @@ const mainColumns = [
 
   },
   {      
-    accessorKey: 'keyFindings',
+    accessorKey: 'key_findings',
     header: 'Key Findings',
     cell: (props) => <p>{props.getValue()}</p>
   },
   {      
-    accessorKey: 'brixiaScores',
+    accessorKey: 'brixia_scores',
     header: 'Brixia Scores',
     cell: (props) => <p>{props.getValue()}</p>
   },
@@ -69,7 +70,7 @@ const mainColumns = [
     cell: (props) => <p>{props.getValue()}</p>
   },
   {      
-    accessorKey: 'zip',
+    accessorKey: 'zip_code',
     header: 'Zip Code',
     cell: (props) => <p>{props.getValue()}</p>
   },
@@ -97,9 +98,15 @@ const adminColumns = [
 ];
 
 function ExamTable({ isAdminTable }){
+<<<<<<< Updated upstream
   const [data, setData] = useState(exams)
 
+=======
+  // const [data, setData] = useState(exams);
+>>>>>>> Stashed changes
   const columns = isAdminTable ? [...mainColumns, ...adminColumns] : mainColumns;
+
+  const data = useMemo(() => mData, [])
 
   const table = useReactTable({
     columns,

@@ -9,7 +9,7 @@ import { Search } from './components/Search.js';
 import PatientDetails from './pages/PatientDetails.js';
 import ExamUpdate from './pages/examUpdate.js';
 import ExamDetails from './pages/ExamDetails.js';
-
+import CreateExam from './components/CreateExam';
 
 function App() {
 
@@ -17,9 +17,9 @@ function App() {
     <div className="App">
       <Box maxW={1000} mx="auto" px={6} pt={24} fontSize="sm">
         <header className="App-header">
-            {/* NOTE: when false, does not show update and delete columns              */}
             <Routes>
               <Route path="/" element={<ExamTable/>} />
+              <Route path="/exams/create" element={<CreateExam/>} />
               <Route path="/exams" element={<ExamTable isAdminTable={false}/>} />
               <Route path="/admin" element={<ExamTable isAdminTable={true}/>} />
               <Route path="/exam/:id" element={<ExamDetails/>}/>

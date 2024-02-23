@@ -8,7 +8,7 @@ import Navbar from './components/Navbar';
 import { Search } from './components/Search.js';
 import Admin from './pages/Admin.js'
 import PatientDetails from './pages/PatientDetails.js';
-import ExamUpdate from './pages/examUpdate.js';
+import ExamUpdate from './pages/xamUpdate.js';
 import ExamDetails from './pages/ExamDetails.js';
 import CreateExam from './pages/CreateExam';
 import AllExams from './pages/AllExams.js';

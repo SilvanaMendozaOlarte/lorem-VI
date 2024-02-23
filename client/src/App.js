@@ -8,9 +8,9 @@ import Navbar from './components/Navbar';
 import { Search } from './components/Search.js';
 import Admin from './pages/Admin.js'
 import PatientDetails from './pages/PatientDetails.js';
-import ExamUpdate from './pages/ExamUpdate.js';
+import ExamUpdate from './pages/examUpdate.js';
 import ExamDetails from './pages/ExamDetails.js';
-import CreateExam from './components/CreateExam';
+import CreateExam from './pages/CreateExam';
 
 function App() {
 

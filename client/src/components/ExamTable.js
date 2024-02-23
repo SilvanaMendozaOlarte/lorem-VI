@@ -9,12 +9,12 @@ const mainColumns = [
   {
     accessorKey: 'patient_id',
     header: 'Patient ID',
-    cell: (props) => <NavLink to="/patient/:id">{props.getValue()}</NavLink>
+    cell: (props) => <p><NavLink to="/patient/:id">{props.getValue()}</NavLink></p>
   },
   {      
     accessorKey: 'exam_id',
     header: 'Exam ID',
-    cell: (props) => <NavLink to="/exam/:id">{props.getValue()}</NavLink>
+    cell: (props) => <p><NavLink to="/exam/:id">{props.getValue()}</NavLink></p>
   },
   {      
     accessorKey: 'image',
@@ -90,7 +90,7 @@ function ExamTable({ isAdminTable }){
   });
 
   return (
-    <div overflowX="auto">
+    <div className="examTable">
       <table w="full" minWidth="1000px">
         <thead>
           {table.getHeaderGroups().map(headerGroup => (

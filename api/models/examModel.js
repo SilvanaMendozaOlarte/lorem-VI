@@ -1,12 +1,12 @@
+const mongoose = require("mongoose");
 
-  const mongoose = require('mongoose');
-
-  const examSchema = new mongoose.Schema({
-    examId: String,
-    patientId: String,
-    keyFindings: String,
-    brixiaScores: String,
-    imageURL: String
+// Define schema and model for exams
+const examSchema = new mongoose.Schema({
+  examId: String,
+  patientId: String,
+  keyFindings: String,
+  brixiaScores: String,
+  imageURL: String,
 });
-  
-const Exam = mongoose.model('Exam', examSchema);
+
+module.exports = mongoose.model("Exam", examSchema);

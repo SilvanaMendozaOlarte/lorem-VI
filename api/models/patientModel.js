@@ -9,4 +9,4 @@ const patientSchema = new mongoose.Schema({
     bmi: Number
 });
   
-const Patient = mongoose.model('Patient', patientSchema);
+module.exports = mongoose.model('Patient', patientSchema);

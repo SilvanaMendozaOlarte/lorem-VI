@@ -16,14 +16,19 @@ const Exam = require('./models/examModel');
 // Require routes
 const getAllExamsRoute = require('./routes/examGetAll');
 const getExamByIdRoute = require('./routes/examGetPatientById');
+
 const updateExamByIdRoute = require('./routes/examUpdate');
 const deleteExamByIdRoute = require('./routes/examDeleteById');
+const addExam = require('./routes/examAdd');
 
 // Use routes
 app.use('/api/exams', getAllExamsRoute);
 app.use('/api/patients', getExamByIdRoute);
+
+
 app.use('/api/exams:id', deleteExamByIdRoute);
 app.use('/api/exams:id', updateExamByIdRoute);
+app.use('/api/exams:id', addExam);
 
 // Start the server
 app.listen(port, () => {

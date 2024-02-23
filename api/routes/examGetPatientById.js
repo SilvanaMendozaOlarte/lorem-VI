@@ -16,3 +16,4 @@ app.get('/api/patients/:patientId', async (req, res) => {
     }
   });
   
+  module.exports = router;

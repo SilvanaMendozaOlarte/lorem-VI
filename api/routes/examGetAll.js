@@ -1,4 +1,5 @@
 // API endpoint to get all exams
+const router = express.Router();
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -12,3 +13,4 @@ app.get('/api/exams', async (req, res) => {
     }
   });
   
+module.exports = router;

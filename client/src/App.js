@@ -6,6 +6,7 @@ import { Box, Heading } from '@chakra-ui/react'
 import { BrowserRouter as Router, Route, Routes, useHistory } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { Search } from './components/Search.js';
+import Admin from './pages/Admin.js'
 import PatientDetails from './pages/PatientDetails.js';
 import ExamUpdate from './pages/examUpdate.js';
 import ExamDetails from './pages/ExamDetails.js';
@@ -21,7 +22,7 @@ function App() {
               <Route path="/" element={<ExamTable/>} />
               <Route path="/exams/create" element={<CreateExam/>} />
               <Route path="/exams" element={<ExamTable isAdminTable={false}/>} />
-              <Route path="/admin" element={<ExamTable isAdminTable={true}/>} />
+              <Route path="/admin" element={<Admin/>} />
               <Route path="/exam/:id" element={<ExamDetails/>}/>
               <Route path="/exam/:id/update" element={<examUpdate/>} />
               <Route path="/patient/:id" element={<PatientDetails/>} />

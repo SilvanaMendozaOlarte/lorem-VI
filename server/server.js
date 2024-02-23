@@ -19,6 +19,29 @@ const Exam = require('./models/examModel');
 app.use('/api/exams', examsRoutes);
 app.use('/api/patients', patientsRoutes);
 
+// Exam routes
+const getAllExamsRoute = require('./routes/examGetAll');
+const getExamByIdRoute = require('./routes/examGetPatientById');
+const updateExamByIdRoute = require('./routes/examUpdate');
+const deleteExamByIdRoute = require('./routes/examDeleteById');
+
+app.use('/api/exams', getAllExamsRoute);
+app.use('/api/patients', getExamByIdRoute);
+app.use('/api/exams', deleteExamByIdRoute);
+app.use('/api/exams', updateExamByIdRoute);
+
+
+// API endpoint to get all exams
+app.get('/api/exams', async (req, res) => {
+  try {
+    const exams = await Exam.find();
+    res.json(exams);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

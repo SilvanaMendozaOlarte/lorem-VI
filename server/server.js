@@ -22,8 +22,8 @@ const deleteExamByIdRoute = require('./routes/examDeleteById');
 // Use routes
 app.use('/api/exams', getAllExamsRoute);
 app.use('/api/patients', getExamByIdRoute);
-app.use('/api/exams', deleteExamByIdRoute);
-app.use('/api/exams', updateExamByIdRoute);
+app.use('/api/exams:id', deleteExamByIdRoute);
+app.use('/api/exams:id', updateExamByIdRoute);
 
 // Start the server
 app.listen(port, () => {

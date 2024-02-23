@@ -4,6 +4,18 @@ const styles = {
       backgroundColor: "gray.100",
       color: "gray.500",
     },
+    ".examTable": {
+      margin: "20px",
+      display: "flex",
+      justifyContent: "center", //For horizontal centering
+    },
+    ".examTable tr, .examTable td, .examTable th": {
+      borderBottom:"1px solid #D3D3D3",
+    },
+    "td img": {
+      display: "block",
+      margin: "auto",
+    },  
     svg: {
       cursor: "pointer",
     },

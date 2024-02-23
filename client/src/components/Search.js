@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 //search bar
-export function Search() {
+function Search() {
   const [query, setquery] = useState("");
   const getFilteredExams = (query, exams) => {
     if (!query) {
@@ -22,3 +22,5 @@ export function Search() {
   );
 
 }
+
+export default Search;

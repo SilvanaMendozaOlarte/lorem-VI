@@ -22,13 +22,12 @@ const deleteExamByIdRoute = require('./routes/examDeleteById');
 const addExam = require('./routes/examAdd');
 
 // Use routes
-app.use('/api/exams', getAllExamsRoute);
-app.use('/api/patients', getExamByIdRoute);
+app.use('/api/exams', getAllExamsRoute); // GET all exams
+app.use('/api/exams/:id', getExamByIdRoute); // GET exam by ID
 
-
-app.use('/api/exams:id', deleteExamByIdRoute);
-app.use('/api/exams:id', updateExamByIdRoute);
-app.use('/api/exams:id', addExam);
+app.use('/api/exams/:id', deleteExamByIdRoute); // DELETE exam by ID
+app.use('/api/exams/:id', updateExamByIdRoute); // PUT (update) exam by ID
+app.use('/api/exams', addExam); // POST (add) new exam
 
 // Start the server
 app.listen(port, () => {

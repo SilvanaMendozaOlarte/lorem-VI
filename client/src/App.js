@@ -8,7 +8,7 @@ import Navbar from './components/Navbar';
 import { Search } from './components/Search.js';
 import Admin from './pages/Admin.js'
 import PatientDetails from './pages/PatientDetails.js';
-import ExamUpdate from './pages/examUpdate.js';
+import ExamUpdate from './pages/ExamUpdate.js';
 import ExamDetails from './pages/ExamDetails.js';
 import CreateExam from './components/CreateExam';
 
@@ -24,7 +24,7 @@ function App() {
               <Route path="/exams" element={<ExamTable isAdminTable={false}/>} />
               <Route path="/admin" element={<Admin/>} />
               <Route path="/exam/:id" element={<ExamDetails/>}/>
-              <Route path="/exam/:id/update" element={<examUpdate/>} />
+              <Route path="/exam/:id/update" element={<ExamUpdate/>} />
               <Route path="/patient/:id" element={<PatientDetails/>} />
             </Routes>
         </header>

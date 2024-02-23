@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import './examDetails.css';
 import { Editable, EditableInput, EditableTextarea, EditablePreview } from '@chakra-ui/react'
 
-const examUpdate = () => {
+const ExamUpdate = () => {
     // Temporary Dummy data 
     const patientExamData = {
         patientInfo: {
@@ -40,16 +40,16 @@ const examUpdate = () => {
             </div>
             <div className="examInfo">
                 <h3>Exam Info</h3>
-                <p>Exam ID: {patientExamData.examInfo.examID}</p>
+                <p>Exam ID: </p>
                 <Editable defaultChecked={patientExamData.examInfo.examID} />
                 <p>Image URL:</p>
                 <Editable defaultChecked={patientExamData.examInfo.imageUrl} />
                 <img src={patientExamData.examInfo.imageUrl} alt="X-Ray" />
-                <p>Date: {patientExamData.examInfo.date}</p>
+                <p>Date: </p>
                 <Editable defaultChecked={patientExamData.examInfo.date} />
-                <p>Key Findings: {patientExamData.examInfo.keyFindings}</p>
+                <p>Key Findings: </p>
                 <Editable defaultChecked={patientExamData.examInfo.keyFindings} />
-                <p>Brixia Score: {patientExamData.examInfo.brixiaScore}</p>
+                <p>Brixia Score: </p>
                 <Editable defaultChecked={patientExamData.examInfo.brixiaScore} />
             </div>
             
@@ -57,4 +57,4 @@ const examUpdate = () => {
     );
 }
  
-export default examUpdate;
+export default ExamUpdate;

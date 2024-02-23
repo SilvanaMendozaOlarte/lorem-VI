@@ -30,18 +30,6 @@ app.use('/api/patients', getExamByIdRoute);
 app.use('/api/exams', deleteExamByIdRoute);
 app.use('/api/exams', updateExamByIdRoute);
 
-
-// API endpoint to get all exams
-app.get('/api/exams', async (req, res) => {
-  try {
-    const exams = await Exam.find();
-    res.json(exams);
-  } catch (error) {
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
-
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

@@ -1,4 +1,7 @@
-// API endpoint to get a patient by ID
+// API endpoint to get a patient by IDconst express = require('express');
+const router = express.Router();
+const Patient = require('../models/patient');
+
 app.get('/api/patients/:patientId', async (req, res) => {
     const { patientId } = req.params;
     try {

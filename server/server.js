@@ -11,6 +11,14 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => console.log('Connected to MongoDB'));
 
+// Exam routes
+const getAllExamsRoute = require('./routes/examGetAll');
+const getExamByIdRoute = require('./routes/examGetPatientById');
+
+
+app.use('/api/exams', getAllExamsRoute);
+app.use('/api/patients', getExamByIdRoute);
+
 // Define schema and model for patients
 const patientSchema = new mongoose.Schema({
     patientId: String,

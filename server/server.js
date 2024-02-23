@@ -1,5 +1,3 @@
-// server.js
-
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -15,20 +13,17 @@ db.once('open', () => console.log('Connected to MongoDB'));
 const Patient = require('./models/patientModel');
 const Exam = require('./models/examModel');
 
-// Use routes
-app.use('/api/exams', examsRoutes);
-app.use('/api/patients', patientsRoutes);
-
-// Exam routes
+// Require routes
 const getAllExamsRoute = require('./routes/examGetAll');
 const getExamByIdRoute = require('./routes/examGetPatientById');
 const updateExamByIdRoute = require('./routes/examUpdate');
 const deleteExamByIdRoute = require('./routes/examDeleteById');
 
+// Use routes
 app.use('/api/exams', getAllExamsRoute);
 app.use('/api/patients', getExamByIdRoute);
-app.use('/api/exams', deleteExamByIdRoute);
-app.use('/api/exams', updateExamByIdRoute);
+app.use('/api/exams:id', deleteExamByIdRoute);
+app.use('/api/exams:id', updateExamByIdRoute);
 
 // Start the server
 app.listen(port, () => {

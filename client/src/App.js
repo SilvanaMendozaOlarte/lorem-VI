@@ -11,6 +11,7 @@ import PatientDetails from './pages/PatientDetails.js';
 import ExamUpdate from './pages/ExamUpdate.js';
 import ExamDetails from './pages/ExamDetails.js';
 import CreateExam from './pages/CreateExam';
+import AllExams from './pages/AllExams.js';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
             <Routes>
               <Route path="/" element={<ExamTable/>} />
               <Route path="/exams/create" element={<CreateExam/>} />
-              <Route path="/exams" element={<ExamTable isAdminTable={false}/>} />
+              <Route path="/exams" element={<AllExams/>} />
               <Route path="/admin" element={<Admin/>} />
               <Route path="/exam/:id" element={<ExamDetails/>}/>
               <Route path="/exam/:id/update" element={<ExamUpdate/>} />

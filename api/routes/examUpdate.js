@@ -1,7 +1,7 @@
 //we might need to update this later 
 const express = require('express');
 const router = express.Router();
-const Exam = require('../models/Exam');
+const Exam = require('../models/examModel');
 
 // PUT route to update a specific exam by examId
 router.put('/:examId', async (req, res) => {

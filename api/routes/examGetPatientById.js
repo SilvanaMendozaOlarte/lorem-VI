@@ -2,7 +2,7 @@
 const router = express.Router();
 const Patient = require('../models/patient');
 
-app.get('/api/patients/:patientId', async (req, res) => {
+router.get('/api/patients/:patientId', async (req, res) => {
     const { patientId } = req.params;
     try {
       const patient = await Patient.findOne({ patientId: patientId });

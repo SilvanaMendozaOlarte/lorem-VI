@@ -15,9 +15,14 @@ db.once('open', () => console.log('Connected to MongoDB'));
 const getAllExamsRoute = require('./routes/examGetAll');
 const getExamByIdRoute = require('./routes/examGetPatientById');
 
+const updateExamByIdRoute = require('./routes/examUpdate');
+const deleteExamByIdRoute = require('./routes/examDeleteById');
 
 app.use('/api/exams', getAllExamsRoute);
 app.use('/api/patients', getExamByIdRoute);
+app.use('/api/exams', deleteExamByIdRoute);
+app.use('/api/exams', updateExamByIdRoute);
+
 
 // Define schema and model for patients
 const patientSchema = new mongoose.Schema({
@@ -46,21 +51,6 @@ app.get('/api/exams', async (req, res) => {
   try {
     const exams = await Exam.find();
     res.json(exams);
-  } catch (error) {
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
-// API endpoint to get a patient by ID
-app.get('/api/patients/:patientId', async (req, res) => {
-  const { patientId } = req.params;
-  try {
-    const patient = await Patient.findOne({ patientId: patientId });
-    if (patient) {
-      res.json(patient);
-    } else {
-      res.status(404).json({ error: 'Patient not found' });
-    }
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }

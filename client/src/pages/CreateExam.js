@@ -1,13 +1,22 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
-
+//import navigate 
+import { useNavigate } from "react-router-dom";
 export default function CreateExam() {
+
+    const navigate = useNavigate();
+
+    const handleClick = () =>{
+        navigate('/admin');
+
+    }
+
     return (
         <div className="container mt-5">
             <div className="text-center mb-4">
                 <button className="btn btn-primary mx-1" type="submit">Add Exam</button>
                 <button className="btn btn-secondary mx-1" type="button">Random Exam</button>
-                <button className="btn btn-danger mx-1" type="button">Cancel</button>
+                <button className="btn btn-danger mx-1" type="button" onClick={handleClick}>Cancel</button>
             </div>
             <h1 className="text-center mb-4">Create Exam</h1>
             <div className="row justify-content-center">

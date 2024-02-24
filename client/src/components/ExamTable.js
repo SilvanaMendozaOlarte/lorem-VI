@@ -1,8 +1,9 @@
 // returns the table containing exam data
 import { useState, useMemo } from "react";
-import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import { flexRender, getCoreRowModel, getFilteredRowModel, useReactTable } from '@tanstack/react-table'
 import { Button } from "@chakra-ui/react";
 import { NavLink } from 'react-router-dom'
+import Search from './Search'
 import mData from '../MOCK_DATA.json'
 
 const mainColumns = [
@@ -78,45 +79,56 @@ const adminColumns = [
 
 
 function ExamTable({ isAdminTable }){
-  // const [data, setData] = useState(exams);
   const columns = isAdminTable ? [...mainColumns, ...adminColumns] : mainColumns;
 
-  const data = useMemo(() => mData, [])
+  const data= useMemo(() => mData, []);
+  const [filters, setFilters] = useState('');
 
   const table = useReactTable({
     columns,
     data,
-    getCoreRowModel: getCoreRowModel()
+    state: {
+      globalFilter: filters
+    },
+    getFilteredRowModel: getFilteredRowModel(),
+    getCoreRowModel: getCoreRowModel(),
+    onGlobalFilterChange: setFilters
   });
 
   return (
-    <div className="examTable">
-      <table w="full" minWidth="1000px">
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map(header => (
-              <th key={header.id} style={{ minWidth: header.getSize() }}>
-                {flexRender(
-                  header.column.columnDef.header, 
-                  header.getContext())}
-              </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map(row => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map(cell => (
-                <td key={cell.id} style={{ minWidth: cell.column.getSize() }}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div>
+      <Search 
+        filters={filters}
+        setFilters={setFilters}
+      />
+      <div className="examTable">
+        <table w="full" minWidth="1000px">
+          <thead>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map(header => (
+                <th key={header.id} style={{ minWidth: header.getSize() }}>
+                  {flexRender(
+                    header.column.columnDef.header, 
+                    header.getContext())}
+                </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map(row => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map(cell => (
+                  <td key={cell.id} style={{ minWidth: cell.column.getSize() }}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

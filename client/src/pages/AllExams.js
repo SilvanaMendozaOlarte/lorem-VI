@@ -6,7 +6,6 @@ const AllExams = () => {
 
     return ( 
         <div>
-            <Search />
             <ExamTable isAdminTable={false}/>
         </div>
      );

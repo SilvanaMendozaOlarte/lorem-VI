@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Search = ({filters, setFilters}) => {
+const Search = ({globalFilters, setGlobalFilters}) => {
   return ( 
     <div>
-      <input value={filters || ''}
-      onChange={e => setFilters(e.target.value)}
+      <input value={globalFilters || ''}
+      onChange={e => setGlobalFilters(e.target.value)}
       type="text" 
       variant="filled" 
       placeholder="Search" 

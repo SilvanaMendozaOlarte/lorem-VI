@@ -1,8 +1,8 @@
 // returns the table containing exam data
 import { useState, useMemo } from "react";
-import { flexRender, getCoreRowModel, getFilteredRowModel, useReactTable } from '@tanstack/react-table'
+import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table'
 import { Button } from "@chakra-ui/react";
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import Search from './Search'
 import mData from '../MOCK_DATA.json'
 
@@ -10,12 +10,12 @@ const mainColumns = [
   {
     accessorKey: 'patient_id',
     header: 'Patient ID',
-    cell: (props) => <p><NavLink to="/patient/:id">{props.getValue()}</NavLink></p>
+    cell: (props) => <p><NavLink to={`/patient/${props.getValue()}`}>{props.getValue()}</NavLink></p>
   },
   {      
     accessorKey: 'exam_id',
     header: 'Exam ID',
-    cell: (props) => <p><NavLink to="/exam/:id">{props.getValue()}</NavLink></p>
+    cell: (props) => <p><NavLink to={`/exam/${props.getValue()}`}>{props.getValue()}</NavLink></p>
   },
   {      
     accessorKey: 'image',
@@ -82,24 +82,25 @@ function ExamTable({ isAdminTable }){
   const columns = isAdminTable ? [...mainColumns, ...adminColumns] : mainColumns;
 
   const data= useMemo(() => mData, []);
-  const [filters, setFilters] = useState('');
+  const [globalFilters, setGlobalFilters] = useState('');
 
   const table = useReactTable({
     columns,
     data,
     state: {
-      globalFilter: filters
+      globalFilter: globalFilters
     },
-    getFilteredRowModel: getFilteredRowModel(),
     getCoreRowModel: getCoreRowModel(),
-    onGlobalFilterChange: setFilters
+    getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    onGlobalFilterChange: setGlobalFilters
   });
 
   return (
     <div>
       <Search 
-        filters={filters}
-        setFilters={setFilters}
+        globalFilters={globalFilters}
+        setGlobalFilters={setGlobalFilters}
       />
       <div className="examTable">
         <table w="full" minWidth="1000px">

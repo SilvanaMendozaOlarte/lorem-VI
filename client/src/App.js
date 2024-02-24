@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <Box maxW={1000} mx="auto" px={6} pt={24} fontSize="sm">
+      <Box maxW={1000} mx="auto" px={6} pt={6} fontSize="sm">
         <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/exams"/>} />

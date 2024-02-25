@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+//exam model
 const Exam = require('../models/examModel');
 
 // DELETE route to delete a specific exam by examId

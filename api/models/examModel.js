@@ -1,3 +1,7 @@
+//import express
+
+//import exam model
+
 const mongoose = require("mongoose");
 
 // Define schema and model for exams

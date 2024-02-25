@@ -1,9 +1,11 @@
 // API endpoint to get all exams
-const router = express.Router();
 
 const express = require('express');
+const router = express.Router();
+
 const mongoose = require('mongoose');
-const Exam = require('./models/Exam'); 
+//exam model
+const Exam = require('../models/examModel');
 router.get('/api/exams', async (req, res) => {
     try {
       const exams = await Exam.find();

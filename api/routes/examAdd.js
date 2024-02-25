@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+//import exam model
 const Exam = require('../models/examModel');
 
 // POST route to add a new exam

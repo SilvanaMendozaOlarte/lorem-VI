@@ -1,6 +1,7 @@
 //we might need to update this later 
 const express = require('express');
 const router = express.Router();
+//exam model
 const Exam = require('../models/examModel');
 
 // PUT route to update a specific exam by examId

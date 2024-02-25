@@ -21,9 +21,9 @@ function App() {
         <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/exams"/>} />
-              <Route path="/exams/create" element={<CreateExam/>} />
               <Route path="/exams" element={<AllExams/>} />
               <Route path="/admin" element={<Admin/>} />
+              <Route path="/exams/create" element={<CreateExam/>} />
               <Route path="/exam/:id" element={<ExamDetails/>}/>
               <Route path="/exam/:id/update" element={<ExamUpdate/>} />
               <Route path="/patient/:id" element={<PatientDetails/>} />

@@ -1,6 +1,6 @@
 // returns the table containing exam data
 import { useState, useMemo } from "react";
-import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table'
+import { flexRender, getCoreRowModel, getFilteredRowModel, useReactTable } from '@tanstack/react-table'
 import { Button } from "@chakra-ui/react";
 import { NavLink, Link } from 'react-router-dom'
 import Search from './Search'
@@ -78,23 +78,32 @@ const adminColumns = [
 ];
 
 
-function ExamTable({ isAdminTable }){
+function ExamTable({ isAdminTable, patient_id, setNumExams }){
   const columns = isAdminTable ? [...mainColumns, ...adminColumns] : mainColumns;
 
-  const data= useMemo(() => mData, []);
+  const filteredData = useMemo(() => {
+    if(patient_id) {
+      const data = mData.filter(item => item.patient_id === patient_id);
+      setNumExams(data.length);
+      return data;
+    }
+    return mData;
+  }, [patient_id]);
+
   const [globalFilters, setGlobalFilters] = useState('');
 
   const table = useReactTable({
     columns,
-    data,
+    data: filteredData,
     state: {
-      globalFilter: globalFilters
+      globalFilter: globalFilters,
     },
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    onGlobalFilterChange: setGlobalFilters
+    onGlobalFilterChange: setGlobalFilters,
   });
+  
+  console.log("rowData: ", table.getRowModel().rows.length)
 
   return (
     <div>

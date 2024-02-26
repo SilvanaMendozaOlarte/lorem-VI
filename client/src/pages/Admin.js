@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ExamTable from '../components/ExamTable';
-import { getAllExams, deleteExam } from '../api/examApi'; // Import API functions for CRUD operations
+import { getAllExams } from '../routes/examGetAll'; // Import the function to fetch all exams
+import { deleteExam } from '../routes/examDeleteById.js'; // Import the function to delete an exam
 
 const Admin = () => {
     const navigate = useNavigate();
     const [exams, setExams] = useState([]);
 
     // Function to fetch all exams when component mounts
-    useEffect(() => {
+    useEffect(() => {npm
         fetchExams();
     }, []);
 

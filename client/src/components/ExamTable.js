@@ -1,7 +1,7 @@
 // returns the table containing exam data
 import { useState, useMemo } from "react";
-import { flexRender, getCoreRowModel, getFilteredRowModel, useReactTable } from '@tanstack/react-table'
-import { Button } from "@chakra-ui/react";
+import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table'
+import { ButtonGroup, Button } from "@chakra-ui/react";
 import { NavLink, Link } from 'react-router-dom'
 import Search from './Search'
 import mData from '../MOCK_DATA.json'
@@ -100,6 +100,7 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }){
     },
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     onGlobalFilterChange: setGlobalFilters,
   });
   
@@ -138,6 +139,28 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }){
             ))}
           </tbody>
         </table>
+      </div>
+      <div>
+        <Button 
+          onClick={() => table.previousPage()}
+          isDisabled={!table.getCanPreviousPage()}
+          colorScheme="blue" 
+          variant="solid" 
+          size="md">
+          Previous
+        </Button>
+        <span>
+          {" "} Page {" "} {table.getState().pagination.pageIndex + 1} of {" "}
+          {table.getPageCount()} {" "}
+        </span>
+        <Button
+          onClick={() => table.nextPage()}
+          isDisabled={!table.getCanNextPage()}
+          colorScheme="blue" 
+          variant="solid" 
+          size="md">
+          Next
+        </Button>
       </div>
     </div>
   );

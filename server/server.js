@@ -32,4 +32,4 @@ app.use('/api/exams', addExam); // POST (add) new exam
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-});
+}); 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import { useParams } from 'react-router-dom';
 import './examDetails.css';
-import { Editable, EditableInput, EditableTextarea, EditablePreview } from '@chakra-ui/react'
 
 const ExamUpdate = () => {
     // Temporary Dummy data 
@@ -27,30 +26,30 @@ const ExamUpdate = () => {
             < div className="patientInfo">
                 <h3>Patient Info</h3>
                 <p>Patient ID:</p>
-                <Editable defaultValue={patientExamData.patientInfo.patientID} />
+                <input defaultValue={patientExamData.patientInfo.patientID} />
                 <p>Age: </p>
-                <Editable defaultValue={patientExamData.patientInfo.age} />
+                <input defaultValue={patientExamData.patientInfo.age} />
                 <p>Sex: </p>
-                <Editable defaultChecked={patientExamData.patientInfo.sex} />
+                <input defaultValue={patientExamData.patientInfo.sex} />
                 <p>BMI: </p>
-                <Editable defaultChecked={patientExamData.patientInfo.bmi} />
+                <input defaultValue={patientExamData.patientInfo.bmi} />
                 <p>Zip Code: </p>
-                <Editable defaultChecked={patientExamData.patientInfo.zipCode} />
+                <input defaultValue={patientExamData.patientInfo.zipCode} />
                 
             </div>
             <div className="examInfo">
                 <h3>Exam Info</h3>
                 <p>Exam ID: </p>
-                <Editable defaultChecked={patientExamData.examInfo.examID} />
+                <input defaultValue={patientExamData.examInfo.examID} />
                 <p>Image URL:</p>
-                <Editable defaultChecked={patientExamData.examInfo.imageUrl} />
+                <input defaultValue={patientExamData.examInfo.imageUrl} />
                 <img src={patientExamData.examInfo.imageUrl} alt="X-Ray" />
                 <p>Date: </p>
-                <Editable defaultChecked={patientExamData.examInfo.date} />
+                <input defaultValue={patientExamData.examInfo.date} />
                 <p>Key Findings: </p>
-                <Editable defaultChecked={patientExamData.examInfo.keyFindings} />
+                <input defaultValue={patientExamData.examInfo.keyFindings} />
                 <p>Brixia Score: </p>
-                <Editable defaultChecked={patientExamData.examInfo.brixiaScore} />
+                <input defaultValue={patientExamData.examInfo.brixiaScore} />
             </div>
             
         </div>

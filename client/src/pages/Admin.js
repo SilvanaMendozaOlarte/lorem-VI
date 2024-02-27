@@ -54,4 +54,31 @@ const Admin = () => {
   );
 };
 
+//  getAlExams function makes HTTP requests to backend endpoints
+const getAllExams = async () => {
+    try {
+        const response = await fetch('/api/exams');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching exams:', error);
+        throw error;
+    }
+};
+
+const deleteExam = async (examId) => {
+    try {
+        const response = await fetch(`/api/exams/${examId}`, { method: 'DELETE' });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error deleting exam:', error);
+        throw error;
+    }
+};
+
 export default Admin;

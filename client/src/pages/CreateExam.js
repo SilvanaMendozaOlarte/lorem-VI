@@ -6,6 +6,46 @@ export default function CreateExam() {
 
     const navigate = useNavigate();
 
+    const [formData, setFormData] = useState({
+        // Initialize formData state with empty values for input fields
+        patientId: '',
+        patientAge: '',
+        patientSex: '',
+        patientBMI: '',
+        patientZipCode: '',
+        examId: '',
+        imageURL: '',
+        examDate: '',
+        keyFindings: '',
+        brixiaScore: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('/api/exams', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                navigate('/admin'); // Navigate to admin page after exam is added
+            } else {
+                console.error('Failed to add exam:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error adding exam:', error);
+        }
+    };
+
     const handleClick = () =>{
         navigate('/admin');
 

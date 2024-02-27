@@ -3,12 +3,14 @@ import React from 'react'
 const Search = ({globalFilters, setGlobalFilters}) => {
   return ( 
     <div>
-      <input value={globalFilters || ''}
+      <input className='search'
+      value={globalFilters || ''}
       onChange={e => setGlobalFilters(e.target.value)}
       type="text" 
       variant="filled" 
       placeholder="Search" 
-      borderRadius={5}/>
+      style={{border: '1px solid black', borderRadius: '5px'}} 
+      />
     </div>
    );
 }

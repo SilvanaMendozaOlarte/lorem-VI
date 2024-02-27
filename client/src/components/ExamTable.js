@@ -2,7 +2,7 @@
 import { useState, useMemo } from "react";
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table'
 import { ButtonGroup, Button } from "@chakra-ui/react";
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import Search from './Search'
 import mData from '../MOCK_DATA.json'
 
@@ -61,9 +61,11 @@ const adminColumns = [
     accessorKey: 'update',
     header: 'Update',
     cell: (props) => (
-      <Button colorScheme="teal" variant="solid" size="sm" >
-        Update
-      </Button>
+      <Link to={`/exam/${props.row.original.exam_id}/update`}>
+        <Button colorScheme="teal" variant="solid" size="sm" >
+          Update
+        </Button>
+      </Link>
     ),
   },
   {
@@ -79,6 +81,7 @@ const adminColumns = [
 
 
 function ExamTable({ isAdminTable, patient_id, setNumExams }){
+
   const columns = isAdminTable ? [...mainColumns, ...adminColumns] : mainColumns;
 
   const filteredData = useMemo(() => {
@@ -103,8 +106,6 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }){
     getPaginationRowModel: getPaginationRowModel(),
     onGlobalFilterChange: setGlobalFilters,
   });
-  
-  console.log("rowData: ", table.getRowModel().rows.length)
 
   return (
     <div>

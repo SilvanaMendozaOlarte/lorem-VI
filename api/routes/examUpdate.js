@@ -5,7 +5,7 @@ const router = express.Router();
 const Exam = require('../models/examModel');
 
 // PUT route to update a specific exam by examId
-router.put('/:examId', async (req, res) => {
+router.put('/api/exams/:examId', async (req, res) => {
   try {
     const examId = req.params.examId;
     const updateData = req.body;

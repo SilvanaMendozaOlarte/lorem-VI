@@ -1,3 +1,4 @@
+// require('dotenv').config({ path: '../api/.env' });
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -5,6 +6,10 @@ import App from './App';
 import ExamDetails from './pages/ExamDetails'
 import Navbar from './components/Navbar.js';
 import ExamTable from './components/ExamTable.js';
+
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';

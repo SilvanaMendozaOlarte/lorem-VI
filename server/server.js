@@ -1,17 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const port = 3001;
+const port = 3000;
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost/examsDB', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => console.log('Connected to MongoDB'));
-
-// Require models
-const Patient = require('./models/patientModel');
-const Exam = require('./models/examModel');
 
 // Require routes
 const getAllExamsRoute = require('./routes/examGetAll');

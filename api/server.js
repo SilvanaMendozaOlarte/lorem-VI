@@ -24,9 +24,6 @@ db.once('open', () => {
   console.log(`Database Name: ${db.name}`);
 });
 
-
-
-
 const getExamByIdRoute = require('./routes/examGetPatientById');
 const updateExamByIdRoute = require('./routes/examUpdate');
 const deleteExamByIdRoute = require('./routes/examDeleteById');
@@ -40,7 +37,6 @@ app.use('/api/exams/:id', deleteExamByIdRoute);
 app.use('/api/exams/:id', updateExamByIdRoute);
 //create exam
 app.use('/api/exams', addExam);
-
 
 // Start the server
 app.listen(port, () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from "react-router-dom";
 import './examDetails.css';
 
 const ExamUpdate = () => {
@@ -20,10 +20,22 @@ const ExamUpdate = () => {
             brixiaScore: '4, 5, 6, 7'
         }
     };
+
+    const navigate = useNavigate();
+
+    const handleClick = () =>{
+        navigate('/admin');
+    }
     
     return ( 
-        <div className="examDetails">
-            < div className="patientInfo">
+        <div div className="container mt-5">
+            <h1 className="text-center mb-4">Update Exam</h1>
+            <div className="text-center mb-4">
+                <button className="btn btn-primary mx-1" type="submit">Update</button>
+                <button className="btn btn-danger mx-1" type="button" onClick={handleClick}>Cancel</button>
+            </div>
+            <div className="row justify-content-center">
+                <div className="patientInfo">
                 <h3>Patient Info</h3>
                 <p>Patient ID:</p>
                 <input defaultValue={patientExamData.patientInfo.patientID} />
@@ -35,9 +47,9 @@ const ExamUpdate = () => {
                 <input defaultValue={patientExamData.patientInfo.bmi} />
                 <p>Zip Code: </p>
                 <input defaultValue={patientExamData.patientInfo.zipCode} />
-                
-            </div>
-            <div className="examInfo">
+                </div>
+
+                <div className="examInfo">
                 <h3>Exam Info</h3>
                 <p>Exam ID: </p>
                 <input defaultValue={patientExamData.examInfo.examID} />
@@ -51,7 +63,7 @@ const ExamUpdate = () => {
                 <p>Brixia Score: </p>
                 <input defaultValue={patientExamData.examInfo.brixiaScore} />
             </div>
-            
+            </div>
         </div>
     );
 }

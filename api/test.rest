@@ -1,6 +1,7 @@
 POST http://localhost:3001/exams/add
 Content-Type: application/json
 
+
 {
   "examId": "1234",
   "patientId": "5678",

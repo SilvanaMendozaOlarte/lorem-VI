@@ -15,7 +15,7 @@ export default function CreateExam() {
         imageURL: '',
         examDate: '',
         keyFindings: '',
-        brixiaScore: ''
+        brixiaScores: ''
     });
 
     const handleChange = (e) => {
@@ -55,7 +55,7 @@ export default function CreateExam() {
             imageURL: 'https://example.com/image.jpg',
             examDate: new Date().toISOString().split('T')[0],
             keyFindings: 'Random key findings',
-            brixiaScore: Math.floor(Math.random() * 10) + 1
+            brixiaScores: Math.floor(Math.random() * 10) + 1
         };
         setFormData(randomFormData); // Update the state with random values
     };
@@ -115,8 +115,8 @@ export default function CreateExam() {
                             <textarea className="form-control" id="keyFindings" rows="3" name="keyFindings" value={formData.keyFindings} onChange={handleChange}></textarea>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="brixiaScore" className="form-label">Brixia Score:</label>
-                            <input type="text" className="form-control" id="brixiaScore" name="brixiaScore" value={formData.brixiaScore} onChange={handleChange} />
+                            <label htmlFor="brixiaScores" className="form-label">Brixia Score:</label>
+                            <input type="text" className="form-control" id="brixiaScores" name="brixiaScores" value={formData.brixiaScores} onChange={handleChange} />
                         </div>
                     </div>
                 </div>

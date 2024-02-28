@@ -67,6 +67,26 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
       header: 'Brixia Scores',
       cell: (props) => <p>{props.getValue()}</p>
     },
+    {      
+      accessorKey: 'patientAge',
+      header: 'Age',
+      cell: (props) => <p>{props.getValue()}</p>
+    },
+    {      
+      accessorKey: 'patientSex',
+      header: 'Sex',
+      cell: (props) => <p>{props.getValue()}</p>
+    },
+    {      
+      accessorKey: 'patientBMI',
+      header: 'BMI',
+      cell: (props) => <p>{props.getValue()}</p>
+    },
+    {      
+      accessorKey: 'patientZipCode',
+      header: 'Zip Code',
+      cell: (props) => <p>{props.getValue()}</p>
+    },
     // Remaining columns with updated accessor keys as needed
   ];
   
@@ -107,7 +127,7 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
       return data;
     }
     return exams;
-  }, [exams, patient_id,setNumExams]);
+  }, [exams, patient_id, setNumExams]);
 
   const table = useReactTable({
     columns,

@@ -1,82 +1,57 @@
-import React, { useEffect, useState } from "react";
-// import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import './examDetails.css';
 
 const ExamDetails = () => {
-    // Temporary Dummy data 
-    const patientExamData = {
-        patientInfo: {
-            patientID: 'COVID-19-MA-123',
-            age: '45',
-            sex: 'M',
-            bmi: '24.5',
-            zipCode: '12345'
-        },
-        examInfo: {
-            examID: '456',
-            imageUrl: 'https://www.nih.gov/sites/default/files/news-events/news-releases/2017/20170927-lung-mass.jpg', // Placeholder image URL 
-            date: '2024-02-06',
-            keyFindings: 'Patient key findings details here -- Test is Positive. Lungs ??? .',
-            brixiaScore: '4, 5, 6, 7'
-        }
-    };
+    const { id } = useParams();
+    const [examData, setExamData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    /**
-      *  To Implement later
-      *  Will need to run    ----> `npm install react-router-dom` in cmd/Terminal
-      * */
-    // const { examID } = useParams();
-    // const [examDetails, setExamDetails] = useState(null);
-    // const [isLoading, setIsLoading] = useState(true);
-    // const [error, setError] = useState(null);
+    useEffect(() => {
+        const fetchExamData = async () => {
+            try {
+                const response = await fetch(`http://localhost:3001/exams/${id}`);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch exam data");
+                }
+                const data = await response.json();
+                setExamData(data);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchExamData();
+    }, [id]);
 
-    // useEffect(() => {
-    //     // Simulating a fetch request. Replace with actual API call.
-    //     const fetchExamDetails = async () => {
-    //         setIsLoading(true);
-    //         try {
-    //             // Replace with actual API endpoint
-    //             const response = await fetch(`/api/exams/${examID}`);
-    //             if (!response.ok) throw new Error('Data not found');
-    //             const data = await response.json();
-    //             setExamDetails(data);
-    //         } catch (err) {
-    //             setError(err.message);
-    //         } finally {
-    //             setIsLoading(false);
-    //         }
-    //     };
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
-    //     fetchExamDetails();
-    // }, [examID]);
-
-    // if (isLoading) return <div>Loading...</div>;
-    // if (error) return <div>Error: {error}</div>;
-    // if (!examDetails) return <div>No Exam Details Found</div>;
-
-
-    // Display exam details
-    return ( 
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+    return (
         <div className="examDetails">
-            < div className="patientInfo">
+            <div className="patientInfo">
                 <h3>Patient Info</h3>
-                <p>Patient ID: {patientExamData.patientInfo.patientID}</p>
-                <p>Age: {patientExamData.patientInfo.age}</p>
-                <p>Sex: {patientExamData.patientInfo.sex}</p>
-                <p>BMI: {patientExamData.patientInfo.bmi}</p>
-                <p>Zip Code: {patientExamData.patientInfo.zipCode}</p>
+                <p>Patient ID: {examData.patientId}</p> 
+                <p>Age: {examData.patientAge}</p> 
+                <p>Sex: {examData.patientSex}</p> 
+                <p>BMI: {examData.patientBMI}</p> 
+                <p>Zip Code: {examData.patientZipCode}</p> 
             </div>
             <div className="examInfo">
                 <h3>Exam Info</h3>
-                <p>Exam ID: {patientExamData.examInfo.examID}</p>
-                <img src={patientExamData.examInfo.imageUrl} alt="X-Ray" />
-                <p>Date: {patientExamData.examInfo.date}</p>
-                <p>Key Findings: {patientExamData.examInfo.keyFindings}</p>
-                <p>Brixia Score: {patientExamData.examInfo.brixiaScore}</p>
+                <p>Exam ID: {examData.examId}</p> 
+                <img src={examData.imageURL} alt="X-Ray" />
+                <p>Date: {examData.examDate}</p> 
+                <p>Key Findings: {examData.keyFindings}</p>
+                <p>Brixia Scores: {examData.brixiaScores}</p>
             </div>
-            
         </div>
-     );
-}
- 
-export default ExamDetails;
+    );
+};
+export default ExamDetails

@@ -15,7 +15,7 @@ const examSchema = new mongoose.Schema({
   imageURL: String,
   examDate: Date,
   keyFindings: String,
-  brixiaScores: String
+  brixiaScores: String,
 });
 
 module.exports = mongoose.model("Exam", examSchema);

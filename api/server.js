@@ -13,6 +13,7 @@ mongoose.connect(process.env.DB_URL, {
 });
 
 //use cors
+app.use(express.json())
 const cors = require('cors');
 app.use(cors());
 
@@ -36,7 +37,7 @@ app.use('/api/exams/:id', getExamByIdRoute);
 app.use('/api/exams/:id', deleteExamByIdRoute);
 app.use('/api/exams/:id', updateExamByIdRoute);
 //create exam
-app.use('/api/exams', addExam);
+app.use('/exams', addExam);
 
 // Start the server
 app.listen(port, () => {

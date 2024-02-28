@@ -74,13 +74,32 @@ app.post("/", async (req, res) => {
   }
 });
 
-// DELETE route to delete a specific exam by examId
-app.delete('/:id', async (req, res) => {
+// GET route to fetch a specific exam by examId
+app.get("/exams/:id", async (req, res) => {
   try {
-    const examId = req.params.examId;
+    const examId = req.params.id;
+    
+    // Find the document by examId
+    const exam = await Exam.findOne({ examId });
 
-    // Find the document by ID and delete it
-    const deletedExam = await Exam.findByIdAndDelete(examId);
+    if (!exam) {
+      return res.status(404).json({ message: "Exam not found" });
+    }
+    
+    // Send the exam data as the response
+    res.json(exam);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching exam", error: error.message });
+  }
+});
+
+// DELETE route to delete a specific exam by examId
+app.delete('/exams/:id', async (req, res) => {
+  try {
+    const examId = req.params.id; // Get the examID from the request parameters
+
+    // Find the document by examID and delete it
+    const deletedExam = await Exam.findOneAndDelete({ examId });
 
     // If no document found, send a 404 response
     if (!deletedExam) {

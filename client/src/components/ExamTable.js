@@ -27,7 +27,7 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
   const handleDeleteExam = async (examId) => {
     try {
       // Make a DELETE request to delete the exam with the specified ID
-      const response = await fetch(`http://localhost:3001/${examId}`, {
+      const response = await fetch(`http://localhost:3001/exams/${examId}`, {
         method: 'DELETE'
       });
       if (!response.ok) {

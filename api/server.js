@@ -25,19 +25,49 @@ db.once('open', () => {
   console.log(`Database Name: ${db.name}`);
 });
 
-const getExamByIdRoute = require('./routes/examGetPatientById');
+const getExamByIdRoute = require('./routes/examGetPatientById'); //needs to be duplicated
 const updateExamByIdRoute = require('./routes/examUpdate');
 const deleteExamByIdRoute = require('./routes/examDeleteById');
 const getAllExamsRoute = require('./routes/examGetAll');
 const addExam = require('./routes/examAdd');
 
-// Use routes
+// Define route handler for the root URL
+app.get('/', (req, res) => {
+  res.send('Welcome to My Application'); // Example: Sending a simple welcome message
+});
+
+// Define route handler for handling POST requests to the root URL
+const Exam = require('./models/examModel');
+app.post('/', async (req, res) => {
+  try {
+    const { examId, patientId, keyFindings, brixiaScores, imageURL } = req.body;
+
+    // Create a new exam object
+    const newExam = new Exam({
+      examId,
+      patientId,
+      keyFindings,
+      brixiaScores,
+      imageURL
+    });
+
+    // Save the new exam to the database
+    const savedExam = await newExam.save();
+
+    // Send back the saved exam as the response
+    res.status(201).json(savedExam);
+  } catch (error) {
+    // Handle any errors that occur during the process
+    res.status(500).json({ message: 'Error adding exam', error: error.message });
+  }
+});
+
+// Use routes with different paths
 app.use('/api/exams', getAllExamsRoute);
-app.use('/api/exams/:id', getExamByIdRoute);
-app.use('/api/exams/:id', deleteExamByIdRoute);
-app.use('/api/exams/:id', updateExamByIdRoute);
-//create exam
 app.use('/exams', addExam);
+app.use('/api/exams/delete/:id', deleteExamByIdRoute);
+app.use('/api/exams/update/:id', updateExamByIdRoute);
+app.use('/api/exams/get/:id', getExamByIdRoute);
 
 // Start the server
 app.listen(port, () => {

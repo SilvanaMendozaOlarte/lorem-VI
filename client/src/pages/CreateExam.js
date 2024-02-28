@@ -26,7 +26,7 @@ export default function CreateExam() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('/api/exams', {
+            const response = await fetch('http://localhost:3001/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

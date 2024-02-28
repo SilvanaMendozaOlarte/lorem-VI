@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-//import exam model
+// Import exam model
 const Exam = require('../models/examModel');
 
 // POST route to add a new exam
-router.post('/api/exams', async (req, res) => {
+router.post('/exams', async (req, res) => {
   try {
     const { examId, patientId, keyFindings, brixiaScores, imageURL } = req.body;
 

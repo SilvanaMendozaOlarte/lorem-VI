@@ -1,11 +1,11 @@
-POST http://localhost:3001/exams/add
+POST http://localhost:3001/exams/api/exams
 Content-Type: application/json
 
 
 {
   "examId": "1234",
   "patientId": "5678",
-  "keyFindings": "Some findings",
+  "keyFindings": "testing 1111",
   "brixiaScores": "Scores",
   "imageURL": "http://example.com/image.jpg"
 }

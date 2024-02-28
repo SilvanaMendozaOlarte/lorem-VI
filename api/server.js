@@ -54,11 +54,16 @@ app.post("/", async (req, res) => {
 
     // Create a new exam object
     const newExam = new Exam({
-      examId,
       patientId,
-      keyFindings,
-      brixiaScores,
+      patientAge,
+      patientSex,
+      patientBMI,
+      patientZipCode,
+      examId,
       imageURL,
+      examDate,
+      keyFindings,
+      brixiaScores
     });
 
     // Save the new exam to the database

@@ -78,23 +78,25 @@ app.post("/", async (req, res) => {
 app.get("/exams/:id", async (req, res) => {
   try {
     const examId = req.params.id;
-    
+
     // Find the document by examId
     const exam = await Exam.findOne({ examId });
 
     if (!exam) {
       return res.status(404).json({ message: "Exam not found" });
     }
-    
+
     // Send the exam data as the response
     res.json(exam);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching exam", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error fetching exam", error: error.message });
   }
 });
 
 // DELETE route to delete a specific exam by examId
-app.delete('/exams/:id', async (req, res) => {
+app.delete("/exams/:id", async (req, res) => {
   try {
     const examId = req.params.id; // Get the examID from the request parameters
 
@@ -103,13 +105,15 @@ app.delete('/exams/:id', async (req, res) => {
 
     // If no document found, send a 404 response
     if (!deletedExam) {
-      return res.status(404).json({ message: 'Exam not found' });
+      return res.status(404).json({ message: "Exam not found" });
     }
 
     // Send back the deleted document
     res.json(deletedExam);
   } catch (error) {
-    res.status(500).json({ message: 'Error deleting exam', error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error deleting exam", error: error.message });
   }
 });
 
@@ -120,7 +124,9 @@ app.put("/exams/:id", async (req, res) => {
     const updateData = req.body;
 
     // Find the document by ID and update it with the request body
-    const updatedExam = await Exam.findOneAndUpdate({ examId }, updateData, { new: true });
+    const updatedExam = await Exam.findOneAndUpdate({ examId }, updateData, {
+      new: true,
+    });
 
     // If no document found, send a 404 response
     if (!updatedExam) {
@@ -130,7 +136,9 @@ app.put("/exams/:id", async (req, res) => {
     // Send back the updated document
     res.json(updatedExam);
   } catch (error) {
-    res.status(500).json({ message: "Error updating exam", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error updating exam", error: error.message });
   }
 });
 

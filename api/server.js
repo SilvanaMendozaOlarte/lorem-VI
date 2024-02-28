@@ -32,8 +32,8 @@ const getAllExamsRoute = require('./routes/examGetAll');
 const addExam = require('./routes/examAdd');
 
 // Use routes
-app.use('/api/exams', getAllExamsRoute);
-app.use('/api/exams/:id', getExamByIdRoute);
+app.use('/exams', getAllExamsRoute);
+app.use('/exams', getExamByIdRoute);
 app.use('/api/exams/:id', deleteExamByIdRoute);
 app.use('/api/exams/:id', updateExamByIdRoute);
 //create exam

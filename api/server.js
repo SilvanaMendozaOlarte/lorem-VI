@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
 const Exam = require("./models/examModel");
 app.post("/", async (req, res) => {
   try {
-    const { examId, patientId, keyFindings, brixiaScores, imageURL } = req.body;
+    const {examId,examDate, patientId, keyFindings, brixiaScores, imageURL,patientAge,patientSex,patientBMI,patientZipCode } = req.body;
 
     // Create a new exam object
     const newExam = new Exam({

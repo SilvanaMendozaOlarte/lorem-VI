@@ -122,7 +122,7 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
 
   const filteredData = useMemo(() => {
     if (patient_id) {
-      const data = exams.filter(item => item.patient_id === patient_id);
+      const data = exams.filter(item => item.patientId === patient_id);
       setNumExams(data.length);
       return data;
     }

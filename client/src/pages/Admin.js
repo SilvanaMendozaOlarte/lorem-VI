@@ -24,7 +24,7 @@ const Admin = () => {
 
   const handleDeleteExam = async (examId) => {
     try {
-      const response = await fetch(`http://localhost:3001//exams/${examId}`, {
+      const response = await fetch(`http://localhost:3001/exams/${examId}`, {
         method: "DELETE",
       });
       if (!response.ok) {

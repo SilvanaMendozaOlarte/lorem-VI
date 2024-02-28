@@ -113,6 +113,27 @@ app.delete('/exams/:id', async (req, res) => {
   }
 });
 
+// PUT route to update a specific exam by examId
+app.put("/exams/:id", async (req, res) => {
+  try {
+    const examId = req.params.id;
+    const updateData = req.body;
+
+    // Find the document by ID and update it with the request body
+    const updatedExam = await Exam.findOneAndUpdate({ examId }, updateData, { new: true });
+
+    // If no document found, send a 404 response
+    if (!updatedExam) {
+      return res.status(404).json({ message: "Exam not found" });
+    }
+
+    // Send back the updated document
+    res.json(updatedExam);
+  } catch (error) {
+    res.status(500).json({ message: "Error updating exam", error: error.message });
+  }
+});
+
 // Use routes with different paths
 app.use("/api/exams", getAllExamsRoute);
 app.use("/exams", addExam);

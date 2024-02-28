@@ -147,6 +147,28 @@ app.put("/exams/:id", async (req, res) => {
   }
 });
 
+// Import the Patient model
+const Patient = require("./models/patientModel");
+// Define route handler for handling GET requests to get patient by ID
+app.get("/patients/:id", async (req, res) => {
+  try {
+    const patientId = req.params.id;
+
+    // Fetch the patient data by ID from the database
+    const patient = await Patient.findOne({ patientId });
+
+    if (!patient) {
+      return res.status(404).json({ message: "Patient not found" });
+    }
+
+    // Send the patient data as the response
+    res.json(patient);
+  } catch (error) {
+    // Handle any errors that occur during the process
+    res.status(500).json({ message: "Error fetching patient", error: error.message });
+  }
+});
+
 // Use routes with different paths
 app.use("/api/exams", getAllExamsRoute);
 app.use("/exams", addExam);

@@ -20,6 +20,15 @@ export default function CreateExam() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        
+        // If the name is either 'examId' or 'patientId', validate that the value contains only numbers
+        if (name === 'examId' || name === 'patientId') {
+        // Check if the value is not a number
+        if (isNaN(value)) {
+            // If not a number, do not update the state
+            return;
+        }
+    }
         setFormData({ ...formData, [name]: value });
     };
 
@@ -46,12 +55,13 @@ export default function CreateExam() {
 
     const handleRandomExam = () => {
         const randomFormData = {
-            patientId: Math.random().toString(36).substring(7),
+            // Generate random numbers for patientId and examId
+            patientId: Math.floor(Math.random() * 1000000), // Random number between 0 and 999999
+            examId: Math.floor(Math.random() * 1000000), // Random number between 0 and 999999
             patientAge: Math.floor(Math.random() * 100) + 1,
             patientSex: Math.random() < 0.5 ? 'Male' : 'Female',
             patientBMI: (Math.random() * (40 - 15) + 15).toFixed(2),
             patientZipCode: Math.floor(Math.random() * 100000),
-            examId: Math.random().toString(36).substring(7),
             imageURL: 'https://example.com/image.jpg',
             examDate: new Date().toISOString().split('T')[0],
             keyFindings: 'Random key findings',

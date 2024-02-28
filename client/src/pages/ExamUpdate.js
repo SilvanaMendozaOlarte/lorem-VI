@@ -96,7 +96,7 @@ const ExamUpdate = () => {
                         <p>Key Findings: </p>
                         <input type="text" name="keyFindings" value={examData.keyFindings} onChange={handleChange} />
                         <p>Brixia Score: </p>
-                        <input type="text" name="brixiaScore" value={examData.brixiaScore} onChange={handleChange} />
+                        <input type="text" name="brixiaScores" value={examData.brixiaScores} onChange={handleChange} />
                     </div>
                 </div>
             </form>

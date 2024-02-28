@@ -3,15 +3,12 @@ import { Link } from "react-router-dom";
 import ExamTable from "../components/ExamTable";
 
 const Admin = () => {
-    
   const [exams, setExams] = useState([]);
 
-  // Function to fetch all exams when component mounts
   useEffect(() => {
     fetchExams();
   }, []);
 
-  // Function to fetch all exams
   const fetchExams = async () => {
     try {
       const response = await fetch("http://localhost:3001/exams");
@@ -25,11 +22,16 @@ const Admin = () => {
     }
   };
 
-  // Function to handle delete exam action
   const handleDeleteExam = async (examId) => {
     try {
-      await fetch(`/api/exams/${examId}`, { method: "DELETE" });
-      fetchExams(); // Refresh exams after deletion
+      const response = await fetch(`http://localhost:3001/${examId}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete exam");
+      }
+      // Refresh exams after deletion
+      fetchExams();
     } catch (error) {
       console.error("Error deleting exam:", error);
     }
@@ -43,11 +45,7 @@ const Admin = () => {
         </Link>
       </div>
       <div>
-        <ExamTable
-          exams={exams}
-          onDelete={handleDeleteExam}
-          isAdminTable={true}
-        />
+        <ExamTable exams={exams} onDelete={handleDeleteExam} isAdminTable={true} />
       </div>
     </div>
   );

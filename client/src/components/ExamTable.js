@@ -24,6 +24,21 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
       console.error('Error fetching exams:', error);
     }
   };
+  const handleDeleteExam = async (examId) => {
+    try {
+      // Make a DELETE request to delete the exam with the specified ID
+      const response = await fetch(`http://localhost:3001/${examId}`, {
+        method: 'DELETE'
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete exam');
+      }
+      // Refresh the list of exams after successful deletion
+      fetchExams();
+    } catch (error) {
+      console.error('Error deleting exam:', error);
+    }
+  };
 
   const mainColumns = [
     {
@@ -60,7 +75,7 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
       accessorKey: 'update',
       header: 'Update',
       cell: (props) => (
-        <Link to={`/exam/${props.row.original.exam_id}/update`}>
+        <Link to={`/exam/${props.row.original.examId}/update`}>
           <Button colorScheme="teal" variant="solid" size="sm" >
             Update
           </Button>
@@ -71,7 +86,12 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
       accessorKey: 'delete',
       header: 'Delete',
       cell: (props) => (
-        <Button colorScheme="red" variant="solid" size="sm" >
+        <Button 
+          colorScheme="red" 
+          variant="solid" 
+          size="sm"
+          onClick={() => handleDeleteExam(props.row.original.examId)} // Call delete function with exam ID
+        >
           Delete
         </Button>
       ),
@@ -87,7 +107,7 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
       return data;
     }
     return exams;
-  }, [exams, patient_id]);
+  }, [exams, patient_id,setNumExams]);
 
   const table = useReactTable({
     columns,

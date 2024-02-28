@@ -38,7 +38,7 @@ const Admin = () => {
 
   return (
     <div>
-      <div>
+      <div className="mb-3">
         <Link to="/exams/create" className="btn btn-primary mx-1">
           Create Exam
         </Link>

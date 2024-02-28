@@ -1,99 +1,93 @@
-// returns the table containing exam data
-import { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table'
-import { ButtonGroup, Button } from "@chakra-ui/react";
-import { NavLink, Link, useNavigate } from 'react-router-dom'
+import { Button } from "@chakra-ui/react";
+import { NavLink, Link } from 'react-router-dom'
 import Search from './Search'
-import mData from '../MOCK_DATA.json'
 
-const mainColumns = [
-  {
-    accessorKey: 'patient_id',
-    header: 'Patient ID',
-    cell: (props) => <p><NavLink to={`/patient/${props.getValue()}`}>{props.getValue()}</NavLink></p>
-  },
-  {      
-    accessorKey: 'exam_id',
-    header: 'Exam ID',
-    cell: (props) => <p><NavLink to={`/exam/${props.getValue()}`}>{props.getValue()}</NavLink></p>
-  },
-  {      
-    accessorKey: 'image',
-    header: 'Image',
-    cell: (props) => {
-      return <img src={`${props.row.original.image}`} alt="exam" style= {{ maxWidth: '100px' }}  />;}
+function ExamTable({ isAdminTable, patient_id, setNumExams }) {
+  const [exams, setExams] = useState([]);
+  const [globalFilters, setGlobalFilters] = useState('');
 
-  },
-  {      
-    accessorKey: 'key_findings',
-    header: 'Key Findings',
-    cell: (props) => <p>{props.getValue()}</p>
-  },
-  {      
-    accessorKey: 'brixia_scores',
-    header: 'Brixia Scores',
-    cell: (props) => <p>{props.getValue()}</p>
-  },
-  {      
-    accessorKey: 'age',
-    header: 'Age',
-    cell: (props) => <p>{props.getValue()}</p>
-  },
-  {      
-    accessorKey: 'sex',
-    header: 'Sex',
-    cell: (props) => <p>{props.getValue()}</p>
-  },
-  {      
-    accessorKey: 'bmi',
-    header: 'BMI',
-    cell: (props) => <p>{props.getValue()}</p>
-  },
-  {      
-    accessorKey: 'zip_code',
-    header: 'Zip Code',
-    cell: (props) => <p>{props.getValue()}</p>
-  },
-]
+  useEffect(() => {
+    fetchExams();
+  }, []);
 
-const adminColumns = [
-  {
-    accessorKey: 'update',
-    header: 'Update',
-    cell: (props) => (
-      <Link to={`/exam/${props.row.original.exam_id}/update`}>
-        <Button colorScheme="teal" variant="solid" size="sm" >
-          Update
+  const fetchExams = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/exams'); // Assuming your API endpoint is at this URL
+      if (!response.ok) {
+        throw new Error('Failed to fetch exams');
+      }
+      const data = await response.json();
+      setExams(data);
+    } catch (error) {
+      console.error('Error fetching exams:', error);
+    }
+  };
+
+  const mainColumns = [
+    {
+      accessorKey: 'patientId', // Update accessor key for patientId
+      header: 'Patient ID',
+      cell: (props) => <p><NavLink to={`/patient/${props.getValue()}`}>{props.getValue()}</NavLink></p>
+    },
+    {      
+      accessorKey: 'examId', // Update accessor key for examId
+      header: 'Exam ID',
+      cell: (props) => <p><NavLink to={`/exam/${props.getValue()}`}>{props.getValue()}</NavLink></p>
+    },
+    {      
+      accessorKey: 'imageURL', // Update accessor key for imageURL
+      header: 'Image',
+      cell: (props) => {
+        return <img src={`${props.row.original.imageURL}`} alt="exam" style= {{ maxWidth: '100px' }}  />;}
+    },
+    {      
+      accessorKey: 'keyFindings', // Update accessor key for keyFindings
+      header: 'Key Findings',
+      cell: (props) => <p>{props.getValue()}</p>
+    },
+    {      
+      accessorKey: 'brixiaScores', // Update accessor key for brixiaScores
+      header: 'Brixia Scores',
+      cell: (props) => <p>{props.getValue()}</p>
+    },
+    // Remaining columns with updated accessor keys as needed
+  ];
+  
+  const adminColumns = [
+    {
+      accessorKey: 'update',
+      header: 'Update',
+      cell: (props) => (
+        <Link to={`/exam/${props.row.original.exam_id}/update`}>
+          <Button colorScheme="teal" variant="solid" size="sm" >
+            Update
+          </Button>
+        </Link>
+      ),
+    },
+    {
+      accessorKey: 'delete',
+      header: 'Delete',
+      cell: (props) => (
+        <Button colorScheme="red" variant="solid" size="sm" >
+          Delete
         </Button>
-      </Link>
-    ),
-  },
-  {
-    accessorKey: 'delete',
-    header: 'Delete',
-    cell: (props) => (
-      <Button colorScheme="red" variant="solid" size="sm" >
-        Delete
-      </Button>
-    ),
-  },
-];
-
-
-function ExamTable({ isAdminTable, patient_id, setNumExams }){
+      ),
+    },
+  ];
 
   const columns = isAdminTable ? [...mainColumns, ...adminColumns] : mainColumns;
 
   const filteredData = useMemo(() => {
-    if(patient_id) {
-      const data = mData.filter(item => item.patient_id === patient_id);
+    if (patient_id) {
+      const data = exams.filter(item => item.patient_id === patient_id);
       setNumExams(data.length);
       return data;
     }
-    return mData;
-  }, [patient_id]);
-
-  const [globalFilters, setGlobalFilters] = useState('');
+    return exams;
+  }, [exams, patient_id]);
 
   const table = useReactTable({
     columns,
@@ -166,7 +160,5 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }){
     </div>
   );
 }
-
- 
 
 export default ExamTable;

@@ -44,6 +44,22 @@ export default function CreateExam() {
         }
     };
 
+    const handleRandomExam = () => {
+        const randomFormData = {
+            patientId: Math.random().toString(36).substring(7),
+            patientAge: Math.floor(Math.random() * 100) + 1,
+            patientSex: Math.random() < 0.5 ? 'Male' : 'Female',
+            patientBMI: (Math.random() * (40 - 15) + 15).toFixed(2),
+            patientZipCode: Math.floor(Math.random() * 100000),
+            examId: Math.random().toString(36).substring(7),
+            imageURL: 'https://example.com/image.jpg',
+            examDate: new Date().toISOString().split('T')[0],
+            keyFindings: 'Random key findings',
+            brixiaScore: Math.floor(Math.random() * 10) + 1
+        };
+        setFormData(randomFormData); // Update the state with random values
+    };
+
     const handleClick = () => {
         navigate('/admin');
     }
@@ -51,8 +67,7 @@ export default function CreateExam() {
     return (
         <div className="container mt-5">
             <div className="text-center mb-4">
-                <button className="btn btn-primary mx-1" type="submit">Add Exam</button>
-                <button className="btn btn-secondary mx-1" type="button">Random Exam</button>
+                <button className="btn btn-secondary mx-1" type="button" onClick={handleRandomExam}>Random Exam</button>
                 <button className="btn btn-danger mx-1" type="button" onClick={handleClick}>Cancel</button>
             </div>
             <h1 className="text-center mb-4">Create Exam</h1>
@@ -62,46 +77,46 @@ export default function CreateExam() {
                         <h2>Patient Info</h2>
                         <div className="mb-3">
                             <label htmlFor="patientId" className="form-label">Patient ID:</label>
-                            <input type="text" className="form-control" id="patientId" name="patientId" onChange={handleChange} />
+                            <input type="text" className="form-control" id="patientId" name="patientId" value={formData.patientId} onChange={handleChange} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="patientAge" className="form-label">Age:</label>
-                            <input type="number" className="form-control" id="patientAge" name="patientAge" onChange={handleChange} />
+                            <input type="number" className="form-control" id="patientAge" name="patientAge" value={formData.patientAge} onChange={handleChange} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="patientSex" className="form-label">Sex:</label>
-                            <input type="text" className="form-control" id="patientSex" name="patientSex" onChange={handleChange} />
+                            <input type="text" className="form-control" id="patientSex" name="patientSex" value={formData.patientSex} onChange={handleChange} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="patientBMI" className="form-label">BMI:</label>
-                            <input type="text" className="form-control" id="patientBMI" name="patientBMI" onChange={handleChange} />
+                            <input type="text" className="form-control" id="patientBMI" name="patientBMI" value={formData.patientBMI} onChange={handleChange} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="patientZipCode" className="form-label">ZipCode:</label>
-                            <input type="text" className="form-control" id="patientZipCode" name="patientZipCode" onChange={handleChange} />
+                            <input type="text" className="form-control" id="patientZipCode" name="patientZipCode" value={formData.patientZipCode} onChange={handleChange} />
                         </div>
                     </div>
                     <div className="col-md-5">
                         <h2>Exam Info</h2>
                         <div className="mb-3">
                             <label htmlFor="examId" className="form-label">Exam ID:</label>
-                            <input type="text" className="form-control" id="examId" name="examId" onChange={handleChange} />
+                            <input type="text" className="form-control" id="examId" name="examId" value={formData.examId} onChange={handleChange} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="imageURL" className="form-label">Image URL:</label>
-                            <input type="text" className="form-control" id="imageURL" name="imageURL" onChange={handleChange} />
+                            <input type="text" className="form-control" id="imageURL" name="imageURL" value={formData.imageURL} onChange={handleChange} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="examDate" className="form-label">Date:</label>
-                            <input type="date" className="form-control" id="examDate" name="examDate" onChange={handleChange} />
+                            <input type="date" className="form-control" id="examDate" name="examDate" value={formData.examDate} onChange={handleChange} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="keyFindings" className="form-label">KeyFindings:</label>
-                            <textarea className="form-control" id="keyFindings" rows="3" name="keyFindings" onChange={handleChange}></textarea>
+                            <textarea className="form-control" id="keyFindings" rows="3" name="keyFindings" value={formData.keyFindings} onChange={handleChange}></textarea>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="brixiaScore" className="form-label">Brixia Score:</label>
-                            <input type="text" className="form-control" id="brixiaScore" name="brixiaScore" onChange={handleChange} />
+                            <input type="text" className="form-control" id="brixiaScore" name="brixiaScore" value={formData.brixiaScore} onChange={handleChange} />
                         </div>
                     </div>
                 </div>

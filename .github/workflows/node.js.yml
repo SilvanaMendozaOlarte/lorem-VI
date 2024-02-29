@@ -21,6 +21,9 @@ jobs:
         uses: actions/setup-node@v3   # Update to the latest version
         with:
           node-version: ${{ matrix.node-version }}
-      - run: cd api      # Change to the api directory
-      - run: npm ci      # Install dependencies
-      - run: npm test    # Run tests
+      - name: Change to API directory
+        run: cd api      # Change to the api directory
+      - name: Install dependencies
+        run: npm ci      # Install dependencies
+      - name: Run tests
+        run: npm test    # Run tests

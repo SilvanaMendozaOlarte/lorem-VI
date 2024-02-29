@@ -13,14 +13,14 @@ jobs:
   
       strategy:
         matrix:
-          node-version: [14.x, 16.x, 18.x]
+          node-version: [14.x, 16.x, 'lts/*']  
   
       steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3  # Update to the latest version
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3   # Update to the latest version
         with:
           node-version: ${{ matrix.node-version }}
-      - run: cd lorem-VI/api
-      - run: npm ci
-      - run: npm test
+      - run: cd api      # Change to the api directory
+      - run: npm ci      # Install dependencies
+      - run: npm test    # Run tests

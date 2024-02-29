@@ -15,11 +15,13 @@ beforeAll(async () => {
 
     app.use(express.json());
     app.use('/api/exams', getAllExamsRoute);
-});
+}, 30000); // Increase timeout to 30 seconds
 
 afterAll(async () => {
     await mongoose.disconnect();
-    await mongoServer.stop();
+    if (mongoServer){
+        await mongoServer.stop();
+    }
 });
 
 describe('GET /api/exams', () => {

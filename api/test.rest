@@ -1,0 +1,16 @@
+POST http://localhost:3001/exams/api/exams
+Content-Type: application/json
+
+
+{
+  "examId": "1234",
+  "patientId": "5678",
+  "keyFindings": "testing 224222",
+  "brixiaScores": "Scores",
+  "imageURL": "http://example.com/image.jpg"
+}
+
+###
+GET http://localhost:3001/exams/api/exams 
+
+

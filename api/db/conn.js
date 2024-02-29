@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 const db = process.env.ATLAS_URI;
 

@@ -4,7 +4,7 @@ const router = express.Router();
 const Exam = require('../models/examModel');
 
 // POST route to add a new exam
-router.post('/exams', async (req, res) => {
+router.post('/', async (req, res) => {    // Instead of router.post('/exams', async (req, res)
   try {
     const { examId, patientId, keyFindings, brixiaScores, imageURL } = req.body;
 

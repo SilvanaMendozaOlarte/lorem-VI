@@ -3,6 +3,7 @@ import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel
 import { Button } from "@chakra-ui/react";
 import { NavLink, Link } from 'react-router-dom'
 import Search from './Search'
+import '../index.css';
 
 function ExamTable({ isAdminTable, patient_id, setNumExams }) {
   const [exams, setExams] = useState([]);

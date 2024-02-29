@@ -6,7 +6,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 //exam model
 const Exam = require('../models/examModel');
-router.get('/api/exams', async (req, res) => {
+router.get('/', async (req, res) => {      // Instead of router.get('/api/exams', async(req, res) ... )
     try {
       const exams = await Exam.find();
       res.json(exams);

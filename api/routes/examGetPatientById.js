@@ -6,7 +6,7 @@ const router = express.Router();
 //import patient schema
 const Patient = require('../models/patientModel');
 
-router.get('/api/patients/:patientId', async (req, res) => {
+router.get('/:patientId', async (req, res) => {
     const { patientId } = req.params;
     try {
       const patient = await Patient.findOne({ patientId: patientId });
@@ -20,4 +20,4 @@ router.get('/api/patients/:patientId', async (req, res) => {
     }
   });
   
-  module.exports = router;
+module.exports = router;

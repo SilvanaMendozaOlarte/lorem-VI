@@ -4,7 +4,7 @@ const router = express.Router();
 const Exam = require('../models/examModel');
 
 // DELETE route to delete a specific exam by examId
-router.delete('/api/exams/delete/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {    // Instead of '/api/exams/delete/:id';
   try {
     const examId = req.params.id;
 

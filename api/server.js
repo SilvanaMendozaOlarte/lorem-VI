@@ -26,6 +26,7 @@ db.once("open", () => {
 });
 
 const getExamByIdRoute = require("./routes/examGetPatientById"); //needs to be duplicated
+const getPatientByIdRoute = require("./routes/examGetPatientById"); 
 const updateExamByIdRoute = require("./routes/examUpdate");
 const deleteExamByIdRoute = require("./routes/examDeleteById");
 const getAllExamsRoute = require("./routes/examGetAll");
@@ -171,10 +172,11 @@ app.get("/patients/:id", async (req, res) => {
 
 // Use routes with different paths
 app.use("/api/exams", getAllExamsRoute);
-app.use("/exams", addExam);
+app.use("/", addExam);   // Instead of app.use('/exams', addExam);
 app.use("/api/exams/delete/:id", deleteExamByIdRoute);
 app.use("/api/exams/update/:id", updateExamByIdRoute);
 app.use("/api/exams/get/:id", getExamByIdRoute);
+app.use('/api/patients', getPatientByIdRoute);
 
 // Start the server
 app.listen(port, () => {

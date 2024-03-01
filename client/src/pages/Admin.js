@@ -26,7 +26,7 @@ const Admin = () => {
   const handleDeleteExam = async (examId) => {
     try {
       //! https://lorem-vi.onrender.com/api/exams/${examId}
-      const response = await fetch(`http://localhost:3001/exams/${examId}`, {
+      const response = await fetch(`https://lorem-vi.onrender.com/api/exams/${examId}`, {
         method: "DELETE",
       });
       if (!response.ok) {

@@ -12,7 +12,7 @@ const ExamDetails = () => {
         const fetchExamData = async () => {
             try {
                 //! https://lorem-vi.onrender.com/api/exams/${id}
-                const response = await fetch(`http://localhost:3001/exams/${id}`);
+                const response = await fetch(`https://lorem-vi.onrender.com/api/exams/${id}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch exam data");
                 }

@@ -8,3 +8,7 @@
 .patientInfo, .examInfo {
     flex-basis: 45%;
 }
+
+h1 {
+    margin: 10px
+}

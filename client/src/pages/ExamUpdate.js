@@ -94,6 +94,7 @@ const ExamUpdate = () => {
             <p>Patient ID:</p>
             <input
               type="text"
+              className="form-control"
               name="patientId"
               value={examData.patientId}
               onChange={handleChange}
@@ -101,6 +102,7 @@ const ExamUpdate = () => {
             <p>Age: </p>
             <input
               type="text"
+              className="form-control"
               name="patientAge"
               value={examData.patientAge}
               onChange={handleChange}
@@ -108,6 +110,7 @@ const ExamUpdate = () => {
             <p>Sex: </p>
             <input
               type="text"
+              className="form-control"
               name="patientSex"
               value={examData.patientSex}
               onChange={handleChange}
@@ -115,6 +118,7 @@ const ExamUpdate = () => {
             <p>BMI: </p>
             <input
               type="text"
+              className="form-control"
               name="patientBMI"
               value={examData.patientBMI}
               onChange={handleChange}
@@ -122,6 +126,7 @@ const ExamUpdate = () => {
             <p>Zip Code: </p>
             <input
               type="text"
+              className="form-control"
               name="patientZipCode"
               value={examData.patientZipCode}
               onChange={handleChange}
@@ -131,10 +136,16 @@ const ExamUpdate = () => {
           <div className="examInfo">
             <h3>Exam Info</h3>
             <p>Exam ID: </p>
-            <input type="text" name="examId" value={examData.examId} readOnly />
+            <input 
+            type="text" 
+            className="form-control"
+            name="examId" 
+            value={examData.examId} 
+            readOnly />
             <p>Image URL:</p>
             <input
               type="text"
+              className="form-control"
               name="imageURL"
               value={examData.imageURL}
               onChange={handleChange}
@@ -143,6 +154,7 @@ const ExamUpdate = () => {
             <p>Date: </p>
             <input
               type="date"
+              className="form-control"
               name="examDate"
               value={examData.examDate}
               onChange={handleChange}
@@ -150,13 +162,15 @@ const ExamUpdate = () => {
             <p>Key Findings: </p>
             <input
               type="text"
+              className="form-control"
               name="keyFindings"
               value={examData.keyFindings}
               onChange={handleChange}
             />
-            <p>Brixia Score: </p>
+            <p>Brixia Scores: </p>
             <input
               type="text"
+              className="form-control"
               name="brixiaScores"
               value={examData.brixiaScores}
               onChange={handleChange}

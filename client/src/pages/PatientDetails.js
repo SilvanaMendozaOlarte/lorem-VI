@@ -8,7 +8,7 @@ const PatientDetails = () => {
   const [numExams, setNumExams] = useState(0);
 
   return (
-    <div className="patientDetails">
+    <div className="patientDetails container mt-5">
       <h1>Patient Details</h1>
       <h3>Patient ID: {id}</h3>
       <h3>Number of Exams: {numExams}</h3>

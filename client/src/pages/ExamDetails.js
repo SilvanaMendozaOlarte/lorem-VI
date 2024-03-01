@@ -34,22 +34,25 @@ const ExamDetails = () => {
         return <div>Error: {error}</div>;
     }
     return (
-        <div className="examDetails">
-            <div className="patientInfo">
-                <h3>Patient Info</h3>
-                <p>Patient ID: {examData.patientId}</p> 
-                <p>Age: {examData.patientAge}</p> 
-                <p>Sex: {examData.patientSex}</p> 
-                <p>BMI: {examData.patientBMI}</p> 
-                <p>Zip Code: {examData.patientZipCode}</p> 
-            </div>
-            <div className="examInfo">
-                <h3>Exam Info</h3>
-                <p>Exam ID: {examData.examId}</p> 
-                <img src={examData.imageURL} alt="X-Ray" />
-                <p>Date: {examData.examDate}</p> 
-                <p>Key Findings: {examData.keyFindings}</p>
-                <p>Brixia Scores: {examData.brixiaScores}</p>
+        <div className="container mt-5">
+            <h1>Exam Details</h1>
+            <div className="examDetails">
+                <div className="patientInfo">
+                    <h3>Patient Info</h3>
+                    <p>Patient ID: {examData.patientId}</p> 
+                    <p>Age: {examData.patientAge}</p> 
+                    <p>Sex: {examData.patientSex}</p> 
+                    <p>BMI: {examData.patientBMI}</p> 
+                    <p>Zip Code: {examData.patientZipCode}</p> 
+                </div>
+                <div className="examInfo">
+                    <h3>Exam Info</h3>
+                    <p>Exam ID: {examData.examId}</p> 
+                    <img src={examData.imageURL} alt="X-Ray" />
+                    <p>Date: {examData.examDate}</p> 
+                    <p>Key Findings: {examData.keyFindings}</p>
+                    <p>Brixia Scores: {examData.brixiaScores}</p>
+                </div>
             </div>
         </div>
     );

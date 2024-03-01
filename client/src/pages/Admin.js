@@ -11,7 +11,7 @@ const Admin = () => {
 
   const fetchExams = async () => {
     try {
-      const response = await fetch("http://localhost:3001/exams");
+      const response = await fetch("https://lorem-vi.onrender.com/exams");
       if (!response.ok) {
         throw new Error("Failed to fetch exams");
       }
@@ -24,7 +24,7 @@ const Admin = () => {
 
   const handleDeleteExam = async (examId) => {
     try {
-      const response = await fetch(`http://localhost:3001/exams/${examId}`, {
+      const response = await fetch(`https://lorem-vi.onrender.com/exams/${examId}`, {
         method: "DELETE",
       });
       if (!response.ok) {

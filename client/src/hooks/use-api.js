@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-//! insert https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams here
-const API_ROOT = 'http://localhost:9000';
+
+const API_ROOT = 'https://lorem-vi.onrender.com';
 
 export function useApi({ path } = { path: '' }) {
   const [response, setResponse] = useState();

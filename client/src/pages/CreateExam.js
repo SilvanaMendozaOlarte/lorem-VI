@@ -36,7 +36,7 @@ export default function CreateExam() {
     e.preventDefault();
     try {
       //! https://lorem-vi.onrender.com/api/
-      const response = await fetch("http://localhost:3001/", {
+      const response = await fetch("https://lorem-vi.onrender.com/api/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

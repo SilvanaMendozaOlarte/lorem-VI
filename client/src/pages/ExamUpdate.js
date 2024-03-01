@@ -23,6 +23,7 @@ const ExamUpdate = () => {
   useEffect(() => {
     const fetchExamData = async () => {
       try {
+        //! https://lorem-vi.onrender.com/api/exams/${id}
         const response = await fetch(`http://localhost:3001/exams/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch exam data");
@@ -46,6 +47,7 @@ const ExamUpdate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      //! https://lorem-vi.onrender.com/api/exams/${id}
       const response = await fetch(`http://localhost:3001/exams/${id}`, {
         method: "PUT",
         headers: {

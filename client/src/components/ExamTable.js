@@ -15,6 +15,7 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
 
   const fetchExams = async () => {
     try {
+      //! insert https://lorem-vi.onrender.com/api/exams to deploy
       const response = await fetch('http://localhost:3001/exams'); // Assuming your API endpoint is at this URL
       if (!response.ok) {
         throw new Error('Failed to fetch exams');
@@ -28,6 +29,7 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
   const handleDeleteExam = async (examId) => {
     try {
       // Make a DELETE request to delete the exam with the specified ID
+      //! https://lorem-vi.onrender.com/api/exams/${examId} 
       const response = await fetch(`http://localhost:3001/exams/${examId}`, {
         method: 'DELETE'
       });

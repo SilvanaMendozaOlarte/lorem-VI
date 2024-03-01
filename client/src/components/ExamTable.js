@@ -5,6 +5,8 @@ import { NavLink, Link } from 'react-router-dom'
 import Search from './Search'
 import '../index.css';
 
+let apiURL = process.env.REACT_APP_API_URL;
+
 function ExamTable({ isAdminTable, patient_id, setNumExams }) {
   const [exams, setExams] = useState([]);
   const [globalFilters, setGlobalFilters] = useState('');
@@ -15,7 +17,7 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
 
   const fetchExams = async () => {
     try {
-      const response = await fetch('http://localhost:3001/exams'); // Assuming your API endpoint is at this URL
+      const response = await fetch(`${apiURL}/exams`); // Assuming your API endpoint is at this URL
       if (!response.ok) {
         throw new Error('Failed to fetch exams');
       }
@@ -28,7 +30,7 @@ function ExamTable({ isAdminTable, patient_id, setNumExams }) {
   const handleDeleteExam = async (examId) => {
     try {
       // Make a DELETE request to delete the exam with the specified ID
-      const response = await fetch(`http://localhost:3001/exams/${examId}`, {
+      const response = await fetch(`${apiURL}/exams/${examId}`, {
         method: 'DELETE'
       });
       if (!response.ok) {

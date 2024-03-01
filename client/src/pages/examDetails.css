@@ -1,6 +1,7 @@
 .examDetails {
     display: flex;
     justify-content: space-around;
+    margin: auto;
     padding: 20px;
 }
 

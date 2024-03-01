@@ -16,6 +16,9 @@ const styles = {
       display: "block",
       margin: "auto",
     },  
+    "a": {
+      color: "#1D76DB"
+    },
     svg: {
       cursor: "pointer",
     },

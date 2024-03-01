@@ -12,7 +12,7 @@ const Admin = () => {
   const fetchExams = async () => {
     try {
       //! https://lorem-vi.onrender.com/api/exams
-      const response = await fetch("https://lorem-vi.onrender.com/api/exams");
+      const response = await fetch("https://lorem-vi-ntuo.onrender.com/api/exams");
       if (!response.ok) {
         throw new Error("Failed to fetch exams");
       }
@@ -26,7 +26,7 @@ const Admin = () => {
   const handleDeleteExam = async (examId) => {
     try {
       //! https://lorem-vi.onrender.com/api/exams/${examId}
-      const response = await fetch(`https://lorem-vi.onrender.com/api/exams/${examId}`, {
+      const response = await fetch(`https://lorem-vi-ntuo.onrender.com/api/exams/${examId}`, {
         method: "DELETE",
       });
       if (!response.ok) {

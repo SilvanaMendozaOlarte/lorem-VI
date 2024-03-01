@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ExamTable from "../components/ExamTable";
 
+let apiURL = process.env.REACT_APP_API_URL;
+
 const Admin = () => {
   const [exams, setExams] = useState([]);
 
@@ -11,7 +13,7 @@ const Admin = () => {
 
   const fetchExams = async () => {
     try {
-      const response = await fetch("http://localhost:3001/exams");
+      const response = await fetch(`${apiURL}/exams`);
       if (!response.ok) {
         throw new Error("Failed to fetch exams");
       }
@@ -24,7 +26,7 @@ const Admin = () => {
 
   const handleDeleteExam = async (examId) => {
     try {
-      const response = await fetch(`http://localhost:3001/exams/${examId}`, {
+      const response = await fetch(`${apiURL}/exams/${examId}`, {
         method: "DELETE",
       });
       if (!response.ok) {

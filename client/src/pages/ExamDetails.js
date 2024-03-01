@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import './examDetails.css';
 
+let apiURL = process.env.REACT_APP_API_URL;
+
 const ExamDetails = () => {
     const { id } = useParams();
     const [examData, setExamData] = useState(null);
@@ -11,7 +13,7 @@ const ExamDetails = () => {
     useEffect(() => {
         const fetchExamData = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/exams/${id}`);
+                const response = await fetch(`${apiURL}/exams/${id}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch exam data");
                 }

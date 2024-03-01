@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./examDetails.css";
 
+let apiURL = process.env.REACT_APP_API_URL;
+
 const ExamUpdate = () => {
   const { id } = useParams(); // Get the exam ID from the URL params
   const navigate = useNavigate();
@@ -23,7 +25,7 @@ const ExamUpdate = () => {
   useEffect(() => {
     const fetchExamData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/exams/${id}`);
+        const response = await fetch(`${apiURL}/exams/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch exam data");
         }
@@ -46,7 +48,7 @@ const ExamUpdate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3001/exams/${id}`, {
+      const response = await fetch(`${apiURL}/exams/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
